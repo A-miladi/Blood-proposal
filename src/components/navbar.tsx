@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -111,7 +112,7 @@ export const Navbar = () => {
     <>
       <header
         className={[
-          "fixed top-0 left-0 right-0 z-50 font-iransans transition-all duration-300",
+          "fixed top-0 left-0 px-4 lg:px-0 right-0 z-50 font-iransans transition-all duration-300",
           scrolled
             ? "bg-primary-900/85 backdrop-blur-xl border-b border-beige-200/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
             : "bg-primary-900/40 backdrop-blur-md border-b border-transparent",
@@ -126,9 +127,9 @@ export const Navbar = () => {
             className="group flex items-center gap-3 shrink-0"
             aria-label="صفحه اصلی"
           >
-            <span className="w-9 h-9 rounded-xl flex items-center justify-center bg-red-600/10 border border-red-500/30 text-red-400 group-hover:bg-red-600/20 group-hover:border-red-500/50 transition-colors duration-300">
-              <IconLogo />
-            </span>
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-red-600/10 border border-red-500/30 text-red-400 group-hover:bg-red-600/20 group-hover:border-red-500/50 transition-colors duration-300">
+              <Image src="/favicon.png" alt="اهدای من" width={80} height={80} />
+            </div>
             <span className="flex flex-col leading-tight">
               <span className="text-base font-morabba font-bold text-beige-50">
                 اهدای من
@@ -216,7 +217,7 @@ export const Navbar = () => {
 
         <div
           className={[
-            "absolute top-16 right-0 left-0 mx-4 rounded-2xl border border-beige-200/10 bg-primary-900/95 backdrop-blur-xl p-4",
+            "absolute top-18 right-0 left-0 mx-4 rounded-2xl border border-beige-200/10 bg-primary-900/95 backdrop-blur-xl p-4",
             "transition-transform duration-300",
             isOpen ? "translate-y-0" : "-translate-y-4",
           ].join(" ")}
@@ -228,6 +229,7 @@ export const Navbar = () => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    onClick={() => setIsOpen(false)}
                     aria-current={active ? "page" : undefined}
                     className={[
                       "flex items-center justify-between px-4 py-3 rounded-xl transition-colors duration-200",

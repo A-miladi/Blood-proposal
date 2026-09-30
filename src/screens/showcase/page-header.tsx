@@ -156,7 +156,7 @@ export const PageHeader = () => {
     <section
       ref={sectionRef}
       aria-labelledby="showcase-title"
-      className="relative w-full pt-24 pb-16 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full pt-8 lg:pt-24 pb-16 px-4 lg:px-0 font-iransans overflow-hidden"
     >
       <div className="container mx-auto relative z-10">
         {/* دو ستونه: تیتر + چارت */}

@@ -19,11 +19,11 @@ export const HeroSection = () => {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative w-full rounded-3xl py-12 flex items-center overflow-hidden font-iransans"
+      className="relative w-full rounded-3xl py-8 px-4 lg:px-0 lg:py-12 flex items-center overflow-hidden font-iransans"
     >
-      <div className="relative z-10 w-full h-full flex flex-col lg:flex-row items-center justify-between gap-8 py-10 lg:py-0">
+      <div className="relative z-10 w-full h-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:py-0">
         <div className="w-full lg:w-1/2 max-w-2xl flex flex-col items-start space-y-5 sm:space-y-6">
-          <div className="anim-fade-up inline-flex items-center gap-3 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-4 sm:px-5 py-2 sm:py-2.5 shadow-[0_0_20px_rgba(18,58,99,0.4)] hover:border-blue-400/60 transition-colors duration-500">
+          <div className="anim-fade-up inline-flex items-center gap-3 max-lg:mx-auto bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-4 sm:px-5 py-2 sm:py-2.5 shadow-[0_0_20px_rgba(18,58,99,0.4)] hover:border-blue-400/60 transition-colors duration-500">
             <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />

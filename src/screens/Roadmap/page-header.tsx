@@ -209,19 +209,17 @@ export const PageHeader = ({
     <section
       ref={sectionRef}
       aria-labelledby="page-header-title"
-      className="relative w-full pt-24 pb-16 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full pt-12 lg:pt-24 pb-16 px-4 lg:px-0 font-iransans overflow-hidden"
     >
       <div className="container mx-auto relative z-10">
-        {/* دو ستونه: تیتر + فلوچارت */}
         <div
           className={[
             "grid items-center gap-10 lg:gap-14",
             hasFlowchart ? "lg:grid-cols-[1.3fr_1fr]" : "lg:grid-cols-1",
           ].join(" ")}
         >
-          {/* ستون تیتر */}
           <div className="max-w-3xl" data-reveal="fade-up">
-            <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-6">
+            <div className="inline-flex items-center mx-auto gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-6">
               <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
