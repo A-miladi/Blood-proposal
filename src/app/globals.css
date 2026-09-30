@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+body {
+  background-color: var(--color-primary-900);
+  color: var(--color-beige-500);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-primary {
+  background-color: var(--color-red-600);
+  color: var(--color-white-50);
+}
+
+.header {
+  background-color: var(--color-blue-600);
+}
+@theme inline {
+  --font-sans: var(--font-iransans);
+  --font-mono: var(--font-geist-mono);
+  --font-morabba: "Morabba", sans-serif;
+  --font-iransans: "IranSans", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --font-morabba: "Morabba", system-ui, -apple-system, sans-serif;
+    --font-iransans: "IranSans", system-ui, -apple-system, sans-serif;
+  }
+}
+
+@theme {
+  /* --- رنگ اول: سرمه‌ای تیره / مشکی (Base: #07121F) --- */
+  --color-primary-50: #f2f4f6;
+  --color-primary-100: #e6e9ec;
+  --color-primary-200: #c2c8d0;
+  --color-primary-300: #9ea7b4;
+  --color-primary-400: #56657c;
+  --color-primary-500: #2e3f57;
+  --color-primary-600: #1e2e44;
+  --color-primary-700: #141f30;
+  --color-primary-800: #0d1725;
+  --color-primary-900: #07121f; /* *رنگ پایه* */
+  --color-primary-950: #030811;
+
+  /* --- رنگ دوم: آبی نفتی / سرمه‌ای (Base: #123A63) --- */
+  --color-blue-50: #f0f6fa;
+  --color-blue-100: #e1edf5;
+  --color-blue-200: #b4d2e8;
+  --color-blue-300: #87b7da;
+  --color-blue-400: #3d80b6;
+  --color-blue-500: #1f5990;
+  --color-blue-600: #123a63; /* *رنگ پایه* */
+  --color-blue-700: #0e2d4f;
+  --color-blue-800: #0a203b;
+  --color-blue-900: #061326;
+  --color-blue-950: #030913;
+
+  /* --- رنگ سوم: قرمز زرشکی / یاقوتی (Base: #A11B2E) --- */
+  --color-red-50: #fdf2f4;
+  --color-red-100: #fbe6e9;
+  --color-red-200: #f5c0c8;
+  --color-red-300: #ef9aa7;
+  --color-red-400: #e24d65;
+  --color-red-500: #cb2644;
+  --color-red-600: #a11b2e; /* *رنگ پایه* */
+  --color-red-700: #811525;
+  --color-red-800: #61101c;
+  --color-red-900: #410a12;
+  --color-red-950: #200509;
+
+  /* --- رنگ چهارم: بژ / کرم روشن (Base: #E6DFD8) --- */
+  --color-beige-50: #fdfcfb;
+  --color-beige-100: #fcfaf9;
+  --color-beige-200: #f6f2f0;
+  --color-beige-300: #f0ebe7;
+  --color-beige-400: #ebe5e0;
+  --color-beige-500: #e6dfd8; /* *رنگ پایه* */
+  --color-beige-600: #cfc8c2;
+  --color-beige-700: #a09b96;
+  --color-beige-800: #706c69;
+  --color-beige-900: #403e3c;
+  --color-beige-950: #201f1e;
+
+  /* --- رنگ پنجم: سفید (Base: #FFFFFF) --- */
+  --color-white-50: #ffffff; /* *رنگ پایه* */
+  --color-white-100: #fdfdfd;
+  --color-white-200: #fafafa;
+  --color-white-300: #f7f7f7;
+  --color-white-400: #f2f2f2;
+  --color-white-500: #ededed;
+  --color-white-600: #d1d1d1;
+  --color-white-700: #a3a3a3;
+  --color-white-800: #757575;
+  --color-white-900: #474747;
+  --color-white-950: #242424;
+}
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/Morabba-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/Morabba-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/Morabba-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/Morabba-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/Morabba-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* IranSans Font Family */
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSansXFaNum-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSansXFaNum-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSansXFaNum-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSansXFaNum-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IranSans/IRANSansXFaNum-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+.font-morabba {
+  font-family: "Morabba", sans-serif;
+}
+
+.font-iransans {
+  font-family: "IranSans", sans-serif;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomInUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+[data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+[data-reveal="fade-up"].is-visible {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal="zoom-in-up"].is-visible {
+  animation: zoomInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-zoom-in-up {
+  animation: zoomInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-float {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+  }
+  [data-reveal],
+  .anim-fade-up,
+  .anim-zoom-in-up,
+  .animate-float {
+    animation: none !important;
+    transform: none !important;
+  }
+}
