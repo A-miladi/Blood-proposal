@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import type { CSSProperties } from "react";
-import { useReveal } from "@/hooks/useReveal";
 import {
   ArchNode,
   ARCH_ICONS,
@@ -11,9 +9,6 @@ import {
   MergeConnector,
   VerticalConnector,
 } from "./architecture";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 
 /* ============ Types ============ */
 type Accent = "blue" | "red" | "beige";
@@ -187,7 +182,6 @@ function PageCard({ page, size = "sm" }: PageCardProps) {
     <article
       className={[
         "group relative rounded-3xl h-[550px] overflow-hidden border backdrop-blur-sm",
-        "transition-all duration-500 hover:-translate-y-1",
         a.border,
         a.bg,
       ].join(" ")}
@@ -199,7 +193,6 @@ function PageCard({ page, size = "sm" }: PageCardProps) {
           isLarge ? "aspect-[16/10]" : "aspect-[16/11]",
         ].join(" ")}
       >
-        {/* نوار بالای مرورگر */}
         <div
           className="absolute top-0 left-0 right-0 z-10 flex items-center gap-1.5 px-3 py-2 bg-primary-900/70 backdrop-blur-sm border-b border-beige-200/5"
           aria-hidden="true"
@@ -213,7 +206,7 @@ function PageCard({ page, size = "sm" }: PageCardProps) {
           src={page.image}
           alt={page.title}
           fill
-          className="object-center pt-7 transition-transform duration-700 group-hover:scale-[1.02]"
+          className="object-center pt-7"
           loading="lazy"
         />
 
@@ -223,7 +216,6 @@ function PageCard({ page, size = "sm" }: PageCardProps) {
         />
       </div>
 
-      {/* متن */}
       <div className={isLarge ? "p-6 sm:p-7" : "p-5 sm:p-6"}>
         <div className="flex items-center justify-between mb-2">
           <span className={`text-xs font-medium ${a.text}`}>
@@ -257,20 +249,16 @@ function PageCard({ page, size = "sm" }: PageCardProps) {
 
 /* ============ کامپوننت اصلی ============ */
 export const SolutionSection = () => {
-  const sectionRef = useReveal<HTMLElement>();
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="solution-title"
       className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
     >
       <div className="container mx-auto relative z-10">
         {/* ==== سربرگ ==== */}
-        <div className="max-w-3xl mb-12" data-reveal="fade-up">
+        <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
             <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
             </span>
             <span className="text-blue-200 text-sm font-medium tracking-wide">
@@ -300,11 +288,7 @@ export const SolutionSection = () => {
         </div>
 
         {/* ==== خلاصه عددی ==== */}
-        <ul
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16"
-          data-reveal="fade-up"
-          style={delay(80)}
-        >
+        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
           {SUMMARY_STATS.map((s) => (
             <li
               key={s.label}
@@ -320,11 +304,7 @@ export const SolutionSection = () => {
 
         {/* ==== نمایش پنج صفحه اصلی ==== */}
         <div className="mb-16">
-          <div
-            className="flex items-end justify-between mb-8 flex-wrap gap-4"
-            data-reveal="fade-up"
-            style={delay(120)}
-          >
+          <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
             <div>
               <h3 className="text-2xl md:text-3xl font-morabba font-bold text-beige-50">
                 نگاهی به پنج صفحه اصلی
@@ -338,27 +318,17 @@ export const SolutionSection = () => {
             </span>
           </div>
 
-          {/* ردیف اول — ۳ کارت کوچک (۱، ۲، ۳) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            {PAGES.slice(0, 3).map((p, idx) => (
-              <div
-                key={p.id}
-                data-reveal="fade-up"
-                style={delay(160 + idx * 80)}
-              >
+            {PAGES.slice(0, 3).map((p) => (
+              <div key={p.id}>
                 <PageCard page={p} size="sm" />
               </div>
             ))}
           </div>
 
-          {/* ردیف دوم — ۲ کارت بزرگ (۴، ۵) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {PAGES.slice(3, 5).map((p, idx) => (
-              <div
-                key={p.id}
-                data-reveal="fade-up"
-                style={delay(400 + idx * 80)}
-              >
+            {PAGES.slice(3, 5).map((p) => (
+              <div key={p.id}>
                 <PageCard page={p} size="lg" />
               </div>
             ))}
@@ -366,11 +336,7 @@ export const SolutionSection = () => {
         </div>
 
         {/* ==== معماری کلان ==== */}
-        <div
-          className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10 mb-16"
-          data-reveal="fade-up"
-          style={delay(200)}
-        >
+        <div className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10 mb-16">
           <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
             <h3 className="text-xl md:text-2xl font-morabba font-bold text-beige-100">
               معماری کلان پلتفرم
@@ -399,7 +365,7 @@ export const SolutionSection = () => {
                 <div
                   key={p.id}
                   className={[
-                    "rounded-2xl border backdrop-blur-sm px-5 py-5 transition-all duration-300 hover:-translate-y-0.5",
+                    "rounded-2xl border backdrop-blur-sm px-5 py-5",
                     a.border,
                     a.bg,
                     a.glow,
@@ -445,7 +411,7 @@ export const SolutionSection = () => {
         </div>
 
         {/* ==== سه محصول — جزئیات ==== */}
-        <div className="mb-16" data-reveal="fade-up" style={delay(240)}>
+        <div className="mb-16">
           <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
             <div>
               <h3 className="text-2xl md:text-3xl font-morabba font-bold text-beige-50">
@@ -468,7 +434,7 @@ export const SolutionSection = () => {
                 <li
                   key={p.id}
                   className={[
-                    "group relative rounded-3xl border backdrop-blur-xl p-6 transition-all duration-300 hover:-translate-y-1",
+                    "group relative rounded-3xl border backdrop-blur-xl p-6",
                     a.border,
                     a.bg,
                   ].join(" ")}
@@ -539,7 +505,7 @@ export const SolutionSection = () => {
         </div>
 
         {/* ==== جریان داده ==== */}
-        <div className="mb-16" data-reveal="fade-up" style={delay(280)}>
+        <div className="mb-16">
           <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
             <div>
               <h3 className="text-2xl md:text-3xl font-morabba font-bold text-beige-50">
@@ -554,7 +520,6 @@ export const SolutionSection = () => {
             </span>
           </div>
 
-          {/* ===== افقی — دسکتاپ ===== */}
           <ol className="hidden md:flex items-stretch gap-3">
             {DATA_FLOW.map((step, idx) => {
               const a = ACCENT_MAP[step.accent];
@@ -616,7 +581,6 @@ export const SolutionSection = () => {
             })}
           </ol>
 
-          {/* ===== عمودی — موبایل ===== */}
           <ol className="md:hidden relative">
             {DATA_FLOW.map((step, idx) => {
               const a = ACCENT_MAP[step.accent];
@@ -659,11 +623,7 @@ export const SolutionSection = () => {
         </div>
 
         {/* ==== پیام پایانی ==== */}
-        <div
-          className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/40 via-primary-900/30 to-primary-800/40 backdrop-blur-sm px-8 py-12 text-center"
-          data-reveal="fade-up"
-          style={delay(320)}
-        >
+        <div className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/40 via-primary-900/30 to-primary-800/40 backdrop-blur-sm px-8 py-12 text-center">
           <div
             className="absolute inset-0 opacity-[0.18] pointer-events-none"
             style={{

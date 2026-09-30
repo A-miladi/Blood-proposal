@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 /* ============ Icons ============ */
@@ -108,7 +107,7 @@ export const ARCH_ICONS = {
   chart: IconChart,
 };
 
-/* ============ Accent Palette — فقط از رنگ‌های پروژه ============ */
+/* ============ Accent Palette ============ */
 type Accent = "blue" | "red" | "beige" | "default";
 
 const ACCENT: Record<
@@ -169,7 +168,7 @@ function Node({
   return (
     <div
       className={[
-        "relative rounded-2xl border backdrop-blur-sm transition-all duration-300",
+        "relative rounded-2xl border backdrop-blur-sm",
         a.border,
         a.bg,
         a.glow,
@@ -202,7 +201,6 @@ export const ArchNode = Node;
 
 /* ============ Vertical Connector ============ */
 export function VerticalConnector({ height = 28 }: { height?: number }) {
-  const shouldReduceMotion = useReducedMotion();
   return (
     <div
       className="flex justify-center"
@@ -211,13 +209,6 @@ export function VerticalConnector({ height = 28 }: { height?: number }) {
     >
       <div className="relative w-px h-full">
         <div className="absolute inset-0 bg-gradient-to-b from-beige-200/15 via-red-500/40 to-beige-200/15" />
-        {!shouldReduceMotion && (
-          <motion.div
-            className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(161,27,46,0.9)]"
-            animate={{ top: ["0%", "100%"] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        )}
       </div>
     </div>
   );

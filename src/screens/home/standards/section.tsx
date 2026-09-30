@@ -1,11 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { useReveal } from "@/hooks/useReveal";
 import { STANDARD_ICONS } from "./icons";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 
 /* ============ Types ============ */
 type Accent = "blue" | "red" | "beige";
@@ -22,7 +17,7 @@ type Standard = {
   source: string;
 };
 
-/* ============ Accent Palette — فقط از رنگ‌های پروژه ============ */
+/* ============ Accent Palette ============ */
 const ACCENT: Record<
   Accent,
   {
@@ -153,20 +148,16 @@ const DATA_FLOW: FlowNode[] = [
 
 /* ============ Component ============ */
 export const StandardsSection = () => {
-  const sectionRef = useReveal<HTMLElement>();
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="standards-title"
       className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
     >
       <div className="container mx-auto relative z-10">
         {/* ==== سربرگ ==== */}
-        <div className="max-w-3xl mb-14" data-reveal="fade-up">
+        <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
             <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
             </span>
             <span className="text-blue-200 text-sm font-medium tracking-wide">
@@ -193,22 +184,18 @@ export const StandardsSection = () => {
 
         {/* ==== چهار کارت استاندارد ==== */}
         <ul className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-          {STANDARDS.map((std, idx) => {
+          {STANDARDS.map((std) => {
             const Icon = STANDARD_ICONS[std.icon];
             const a = ACCENT[std.accent];
             return (
               <li
                 key={std.id}
-                data-reveal="fade-up"
-                style={delay(80 + idx * 60)}
                 className={[
                   "group relative rounded-3xl border backdrop-blur-sm p-6 sm:p-7",
-                  "transition-all duration-300 hover:-translate-y-1",
                   a.border,
                   a.bg,
                 ].join(" ")}
               >
-                {/* سربرگ کارت */}
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <div
                     className={[
@@ -237,7 +224,6 @@ export const StandardsSection = () => {
                   {std.description}
                 </p>
 
-                {/* لیست زیرمجموعه‌ها */}
                 <ul className="space-y-2.5 mb-5">
                   {std.items.map((item) => (
                     <li
@@ -253,7 +239,6 @@ export const StandardsSection = () => {
                   ))}
                 </ul>
 
-                {/* مرجع */}
                 <div className="pt-4 border-t border-beige-200/[0.06]">
                   <p className={`text-xs font-medium ${a.text} mb-1`}>
                     {std.reference}
@@ -271,11 +256,7 @@ export const StandardsSection = () => {
         </ul>
 
         {/* ==== دیاگرام جریان داده ==== */}
-        <div
-          className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10 mb-16"
-          data-reveal="fade-up"
-          style={delay(320)}
-        >
+        <div className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10 mb-16">
           <div className="flex items-center justify-between mb-10 flex-wrap gap-3">
             <div>
               <h3 className="text-xl md:text-2xl font-morabba font-bold text-beige-100">
@@ -290,7 +271,6 @@ export const StandardsSection = () => {
             </span>
           </div>
 
-          {/* گره‌های جریان — دسکتاپ */}
           <div className="hidden md:flex items-center justify-between gap-2">
             {DATA_FLOW.map((node, idx) => {
               const a = ACCENT[node.accent];
@@ -302,7 +282,7 @@ export const StandardsSection = () => {
                 >
                   <div
                     className={[
-                      "flex-1 rounded-2xl border backdrop-blur-sm px-4 py-5 text-center transition-all duration-300 hover:-translate-y-0.5",
+                      "flex-1 rounded-2xl border backdrop-blur-sm px-4 py-5 text-center",
                       a.border,
                       a.bg,
                       a.glow,
@@ -373,7 +353,6 @@ export const StandardsSection = () => {
             })}
           </ol>
 
-          {/* پانویس */}
           <div className="mt-8 pt-6 border-t border-beige-200/[0.06] flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] text-beige-500">
             <span className="inline-flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
@@ -391,11 +370,7 @@ export const StandardsSection = () => {
         </div>
 
         {/* ==== پیام پایانی ==== */}
-        <div
-          className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/40 via-primary-900/30 to-primary-800/40 backdrop-blur-sm px-8 py-12 text-center"
-          data-reveal="fade-up"
-          style={delay(380)}
-        >
+        <div className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/40 via-primary-900/30 to-primary-800/40 backdrop-blur-sm px-8 py-12 text-center">
           <div
             className="absolute inset-0 opacity-[0.18] pointer-events-none"
             style={{

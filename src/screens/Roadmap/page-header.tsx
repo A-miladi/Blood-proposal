@@ -1,10 +1,6 @@
 "use client";
 
-import type { CSSProperties, ReactNode } from "react";
-import { useReveal } from "@/hooks/useReveal";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
+import type { ReactNode } from "react";
 
 /* ============ Types ============ */
 type Accent = "blue" | "red" | "beige";
@@ -121,7 +117,6 @@ function CircularFlowChart({
               className={[
                 "w-full h-full rounded-full border-2 backdrop-blur-sm",
                 "flex flex-col items-center justify-center text-center px-1",
-                "transition-all duration-300 group-hover:scale-105",
                 a.border,
                 a.bg,
                 node.isResult ? a.glow : "",
@@ -202,12 +197,10 @@ export const PageHeader = ({
   flowchartCenter,
   stats,
 }: PageHeaderProps) => {
-  const sectionRef = useReveal<HTMLElement>();
   const hasFlowchart = flowchart && flowchart.length > 0;
 
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="page-header-title"
       className="relative w-full pt-12 lg:pt-24 pb-16 px-4 lg:px-0 font-iransans overflow-hidden"
     >
@@ -218,10 +211,9 @@ export const PageHeader = ({
             hasFlowchart ? "lg:grid-cols-[1.3fr_1fr]" : "lg:grid-cols-1",
           ].join(" ")}
         >
-          <div className="max-w-3xl" data-reveal="fade-up">
+          <div className="max-w-3xl">
             <div className="inline-flex items-center mx-auto gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-6">
               <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
               </span>
               <span className="text-blue-200 text-sm font-medium tracking-wide">
@@ -247,11 +239,7 @@ export const PageHeader = ({
 
           {/* ستون فلوچارت */}
           {hasFlowchart && (
-            <div
-              className="relative w-full"
-              data-reveal="fade-up"
-              style={delay(140)}
-            >
+            <div className="relative w-full">
               <CircularFlowChart
                 nodes={flowchart}
                 centerLabel={flowchartCenter}
@@ -262,11 +250,7 @@ export const PageHeader = ({
 
         {/* آمار */}
         {stats && stats.length > 0 && (
-          <ul
-            className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16"
-            data-reveal="fade-up"
-            style={delay(200)}
-          >
+          <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16">
             {stats.map((s) => (
               <li
                 key={s.label}

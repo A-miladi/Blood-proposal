@@ -1,11 +1,5 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { useReveal } from "@/hooks/useReveal";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
-
 /* ============ Types ============ */
 type Accent = "blue" | "red" | "beige";
 
@@ -48,10 +42,9 @@ function RadialChart({ items }: { items: RadialItem[] }) {
   const maxCount = Math.max(...items.map((i) => i.count));
   const radius = 34;
   const strokeWidth = 3.5;
-  const arcSpan = 80; // درجه
-  const quadrantStarts = [-130, -40, 50, 140]; // شروع هر کمان
+  const arcSpan = 80;
+  const quadrantStarts = [-130, -40, 50, 140];
 
-  /* گرد کردن به ۴ رقم اعشار برای جلوگیری از hydration mismatch */
   const round = (n: number) => Math.round(n * 10000) / 10000;
 
   const arcPath = (start: number, end: number, r: number) => {
@@ -79,7 +72,6 @@ function RadialChart({ items }: { items: RadialItem[] }) {
 
           return (
             <g key={item.id}>
-              {/* پس‌زمینه کمان */}
               <path
                 d={arcPath(start, end, radius)}
                 fill="none"
@@ -87,7 +79,6 @@ function RadialChart({ items }: { items: RadialItem[] }) {
                 strokeLinecap="round"
                 className="stroke-beige-200/12"
               />
-              {/* بخش پرشده */}
               <path
                 d={arcPath(start, fillEnd, radius)}
                 fill="none"
@@ -167,11 +158,8 @@ function RadialChart({ items }: { items: RadialItem[] }) {
 
 /* ============ کامپوننت اصلی ============ */
 export const PageHeader = () => {
-  const sectionRef = useReveal<HTMLElement>();
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="tech-header-title"
       className="relative w-full pt-12 lg:pt-24 pb-16 px-4 lg:px-0 font-iransans overflow-hidden"
     >
@@ -179,10 +167,9 @@ export const PageHeader = () => {
         {/* دو ستونه: تیتر + چارت */}
         <div className="grid items-center gap-10 lg:gap-14 lg:grid-cols-[1.3fr_1fr]">
           {/* ستون تیتر */}
-          <div className="max-w-3xl" data-reveal="fade-up">
+          <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-6">
               <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
               </span>
               <span className="text-blue-200 text-sm font-medium tracking-wide">
@@ -208,21 +195,13 @@ export const PageHeader = () => {
           </div>
 
           {/* ستون چارت */}
-          <div
-            className="relative w-full"
-            data-reveal="fade-up"
-            style={delay(140)}
-          >
+          <div className="relative w-full">
             <RadialChart items={CHART_ITEMS} />
           </div>
         </div>
 
         {/* آمار */}
-        <ul
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16"
-          data-reveal="fade-up"
-          style={delay(200)}
-        >
+        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16">
           {[
             { value: "۴", label: "دسته شاخص" },
             { value: "۴", label: "محور امنیت" },

@@ -1,11 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useReveal } from "@/hooks/useReveal";
 import { ProblemsChart } from "./chart";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 
 /* ============ Types ============ */
 type Priority = "critical" | "high" | "medium";
@@ -16,7 +12,6 @@ type Problem = {
   description: string;
   tag: string;
   priority: Priority;
-  /** ماژول راه‌حل متناظر در پلتفرم Fedora */
   solution: string;
 };
 
@@ -208,24 +203,17 @@ const PRIORITY_META: Record<
 
 /* ============ Component ============ */
 export const ProblemsSection = () => {
-  const sectionRef = useReveal<HTMLElement>();
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="problems-title"
       className="relative w-full py-16 px-4 lg:px-0 font-iransans overflow-hidden"
     >
       <div className="container mx-auto relative z-10">
         {/* ==== هدر ==== */}
-        <div
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10"
-          data-reveal="fade-up"
-        >
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-red-900/30 backdrop-blur-xl border border-red-600/30 rounded-full px-4 py-1.5 mb-4">
               <span className="relative flex w-2 h-2" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full w-2 h-2 bg-red-500" />
               </span>
               <span className="text-red-300 text-xs font-medium tracking-wide">
@@ -279,15 +267,11 @@ export const ProblemsSection = () => {
           <ProblemsChart
             title="توزیع چالش‌ها بر اساس حوزه"
             totalLabel="۱۶ چالش"
-            delayMs={100}
           />
         </div>
 
         {/* ==== راهنمای اولویت ==== */}
-        <div
-          className="flex flex-wrap items-center gap-4 mb-5 text-[11px] text-beige-400"
-          data-reveal="fade-up"
-        >
+        <div className="flex flex-wrap items-center gap-4 mb-5 text-[11px] text-beige-400">
           <span className="font-medium text-beige-300">راهنمای اولویت:</span>
           {(Object.keys(PRIORITY_META) as Priority[]).map((key) => (
             <span key={key} className="inline-flex items-center gap-2">
@@ -304,24 +288,21 @@ export const ProblemsSection = () => {
 
         {/* ==== گرید کارت‌ها ==== */}
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {PROBLEMS.map((problem, idx) => {
+          {PROBLEMS.map((problem) => {
             const meta = PRIORITY_META[problem.priority];
             return (
               <li
                 key={problem.id}
-                data-reveal="fade-up"
-                style={delay(Math.min(idx * 30, 300))}
                 className={[
                   "group relative cursor-pointer bg-primary-800/40 backdrop-blur-sm",
                   "border border-beige-200/10 hover:border-red-600/50 rounded-xl p-4",
-                  "transition-all duration-300 hover:-translate-y-0.5",
                   problem.priority === "critical"
                     ? "ring-1 ring-red-500/20"
                     : "",
                 ].join(" ")}
               >
                 <div
-                  className="absolute inset-0 bg-gradient-to-br from-red-600/0 to-red-600/0 group-hover:from-red-600/[0.08] group-hover:to-transparent rounded-xl transition-all duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-red-600/0 to-red-600/0 group-hover:from-red-600/[0.08] group-hover:to-transparent rounded-xl"
                   aria-hidden="true"
                 />
 
@@ -329,7 +310,7 @@ export const ProblemsSection = () => {
                 <div className="relative flex items-center justify-between mb-2.5">
                   <div className="flex items-center gap-2">
                     <span
-                      className="text-2xl font-morabba font-bold text-primary-600/70 group-hover:text-red-600/50 transition-colors duration-300"
+                      className="text-2xl font-morabba font-bold text-primary-600/70 group-hover:text-red-600/50"
                       aria-hidden="true"
                     >
                       {problem.id}
@@ -345,7 +326,7 @@ export const ProblemsSection = () => {
                   </span>
                 </div>
 
-                <h3 className="relative text-sm font-morabba font-bold text-beige-50 mb-1.5 group-hover:text-red-400 transition-colors duration-300 leading-snug">
+                <h3 className="relative text-sm font-morabba font-bold text-beige-50 mb-1.5 group-hover:text-red-400 leading-snug">
                   {problem.title}
                 </h3>
 
@@ -376,7 +357,7 @@ export const ProblemsSection = () => {
                 </div>
 
                 <div
-                  className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/50 transition-all duration-500"
+                  className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/50"
                   aria-hidden="true"
                 />
               </li>
@@ -385,11 +366,7 @@ export const ProblemsSection = () => {
         </ul>
 
         {/* ==== پیام پایانی ==== */}
-        <div
-          className="mt-10 text-center"
-          data-reveal="fade-up"
-          style={delay(200)}
-        >
+        <div className="mt-10 text-center">
           <p className="inline-block text-xs text-beige-400 bg-primary-800/40 backdrop-blur-sm border border-primary-700/50 rounded-full px-5 py-2">
             این چالش‌ها نتیجه بررسی{" "}
             <span className="text-red-400 font-medium">گزارش‌های داخلی</span>،{" "}

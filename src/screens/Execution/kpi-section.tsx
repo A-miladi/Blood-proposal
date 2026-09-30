@@ -1,11 +1,5 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { useReveal } from "@/hooks/useReveal";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
-
 /* ============ Types ============ */
 type Accent = "blue" | "red" | "beige";
 
@@ -109,19 +103,15 @@ const KPI_GROUPS: KpiGroup[] = [
 
 /* ============ کامپوننت ============ */
 export const KpiSection = () => {
-  const sectionRef = useReveal<HTMLElement>();
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="kpi-title"
       className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
     >
       <div className="container mx-auto relative z-10">
-        <div className="max-w-3xl mb-14" data-reveal="fade-up">
+        <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
             <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
             </span>
             <span className="text-blue-200 text-sm font-medium tracking-wide">
@@ -147,16 +137,13 @@ export const KpiSection = () => {
         </div>
 
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {KPI_GROUPS.map((group, idx) => {
+          {KPI_GROUPS.map((group) => {
             const a = ACCENT[group.accent];
             return (
               <li
                 key={group.id}
-                data-reveal="fade-up"
-                style={delay(80 + idx * 60)}
                 className={[
                   "group relative rounded-3xl border backdrop-blur-sm p-6 sm:p-7",
-                  "transition-all duration-300 hover:-translate-y-1",
                   a.border,
                   a.bg,
                 ].join(" ")}

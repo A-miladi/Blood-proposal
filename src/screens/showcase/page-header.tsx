@@ -1,11 +1,5 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { useReveal } from "@/hooks/useReveal";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
-
 /* ============ Types ============ */
 type Accent = "blue" | "red" | "beige";
 
@@ -76,7 +70,6 @@ function SegmentedRing({
   const totalSpan = 360 - gap * segments.length;
   const spans = segments.map((s) => (s.count / total) * totalSpan);
 
-  /* محاسبه زاویه‌ها بدون reassign */
   const arcs = segments.map((s, i) => {
     const before = spans.slice(0, i).reduce((sum, span) => sum + span + gap, 0);
     const start = startAngle + before;
@@ -150,11 +143,8 @@ function SegmentedRing({
 
 /* ============ کامپوننت اصلی ============ */
 export const PageHeader = () => {
-  const sectionRef = useReveal<HTMLElement>();
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="showcase-title"
       className="relative w-full pt-8 lg:pt-24 pb-16 px-4 lg:px-0 font-iransans overflow-hidden"
     >
@@ -162,10 +152,9 @@ export const PageHeader = () => {
         {/* دو ستونه: تیتر + چارت */}
         <div className="grid items-center gap-10 lg:gap-14 lg:grid-cols-[1.3fr_1fr]">
           {/* ستون تیتر */}
-          <div className="max-w-3xl" data-reveal="fade-up">
+          <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-6">
               <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
               </span>
               <span className="text-blue-200 text-sm font-medium tracking-wide">
@@ -191,21 +180,13 @@ export const PageHeader = () => {
           </div>
 
           {/* ستون چارت */}
-          <div
-            className="relative w-full"
-            data-reveal="fade-up"
-            style={delay(140)}
-          >
+          <div className="relative w-full">
             <SegmentedRing segments={SEGMENTS} total={TOTAL} />
           </div>
         </div>
 
         {/* آمار */}
-        <ul
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16"
-          data-reveal="fade-up"
-          style={delay(200)}
-        >
+        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16">
           {[
             { value: "۱۳", label: "ماژول اهداکننده" },
             { value: "۱۴", label: "ماژول عملیات" },

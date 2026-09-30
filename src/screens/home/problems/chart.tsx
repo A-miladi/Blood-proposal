@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 /* ============ Types ============ */
 type Priority = "critical" | "high" | "medium";
@@ -18,9 +17,7 @@ type ProblemsChartProps = {
   data?: ChartItem[];
   totalLabel?: string;
   title?: string;
-  /** تأخیر شروع انیمیشن (میلی‌ثانیه) */
-  delayMs?: number;
-  /** نمایش کنترل مرتب‌سازی */
+
   showSortToggle?: boolean;
 };
 
@@ -50,42 +47,14 @@ const PRIORITY_DOT: Record<Priority, string> = {
   medium: "bg-emerald-400",
 };
 
-/* ============ Motion ============ */
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (custom: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      delay: custom,
-      ease: EASE,
-      staggerChildren: 0.06,
-      delayChildren: custom + 0.15,
-    },
-  }),
-};
-
-const barVariants: Variants = {
-  hidden: { width: 0 },
-  visible: (percent: number) => ({
-    width: `${percent}%`,
-    transition: { duration: 0.9, ease: EASE },
-  }),
-};
-
 /* ============ Component ============ */
 export const ProblemsChart = ({
   data = DEFAULT_DATA,
   title = "توزیع چالش‌ها بر اساس حوزه",
   totalLabel = "۱۶ چالش",
-  delayMs = 100,
   showSortToggle = true,
 }: ProblemsChartProps) => {
   const [sortBy, setSortBy] = useState<SortMode>("count");
-  const shouldReduceMotion = useReducedMotion();
 
   const sortedData = useMemo(() => {
     const copy = [...data];
@@ -101,15 +70,9 @@ export const ProblemsChart = ({
   }, [data, sortBy]);
 
   const maxCount = Math.max(...data.map((d) => d.count));
-  const baseDelay = delayMs / 1000;
 
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      custom={shouldReduceMotion ? 0 : baseDelay}
+    <div
       role="figure"
       aria-label={`${title} — مجموع ${totalLabel}`}
       className="bg-primary-800/30 backdrop-blur-sm border border-beige-200/10 rounded-2xl p-5"
@@ -137,7 +100,7 @@ export const ProblemsChart = ({
               aria-selected={sortBy === "count"}
               onClick={() => setSortBy("count")}
               className={[
-                "px-2.5 py-1 rounded-full transition-colors duration-200",
+                "px-2.5 py-1 rounded-full",
                 sortBy === "count"
                   ? "bg-primary-700/70 text-beige-100"
                   : "text-beige-400 hover:text-beige-200",
@@ -151,7 +114,7 @@ export const ProblemsChart = ({
               aria-selected={sortBy === "priority"}
               onClick={() => setSortBy("priority")}
               className={[
-                "px-2.5 py-1 rounded-full transition-colors duration-200",
+                "px-2.5 py-1 rounded-full",
                 sortBy === "priority"
                   ? "bg-primary-700/70 text-beige-100"
                   : "text-beige-400 hover:text-beige-200",
@@ -185,10 +148,9 @@ export const ProblemsChart = ({
                 className="relative flex-1 h-1 rounded-full overflow-hidden bg-primary-900/40"
                 aria-hidden="true"
               >
-                <motion.div
-                  variants={barVariants}
-                  custom={percent}
-                  className="absolute top-0 right-0 h-full rounded-full bg-gradient-to-l from-primary-500 to-primary-200 transition-[filter] duration-500 group-hover:brightness-125"
+                <div
+                  style={{ width: `${percent}%` }}
+                  className="absolute top-0 right-0 h-full rounded-full bg-gradient-to-l from-primary-500 to-primary-200"
                 />
               </div>
 
@@ -217,6 +179,6 @@ export const ProblemsChart = ({
           );
         })}
       </ul>
-    </motion.div>
+    </div>
   );
 };

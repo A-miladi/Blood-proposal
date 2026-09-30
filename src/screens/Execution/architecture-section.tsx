@@ -1,11 +1,5 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { useReveal } from "@/hooks/useReveal";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
-
 /* ============ Types ============ */
 type Accent = "blue" | "red" | "beige";
 
@@ -120,19 +114,15 @@ const INTEGRATIONS = [
 
 /* ============ کامپوننت ============ */
 export const ArchitectureSection = () => {
-  const sectionRef = useReveal<HTMLElement>();
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="arch-title"
       className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
     >
       <div className="container mx-auto relative z-10">
-        <div className="max-w-3xl mb-14" data-reveal="fade-up">
+        <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
             <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
             </span>
             <span className="text-blue-200 text-sm font-medium tracking-wide">
@@ -158,11 +148,7 @@ export const ArchitectureSection = () => {
         </div>
 
         {/* لایه‌ها */}
-        <div
-          className="relative space-y-3 mb-16"
-          data-reveal="fade-up"
-          style={delay(120)}
-        >
+        <div className="relative space-y-3 mb-16">
           {LAYERS.map((layer, idx) => {
             const a = ACCENT[layer.accent];
             const isLast = idx === LAYERS.length - 1;
@@ -218,11 +204,7 @@ export const ArchitectureSection = () => {
         </div>
 
         {/* یکپارچه‌سازی */}
-        <div
-          className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10"
-          data-reveal="fade-up"
-          style={delay(340)}
-        >
+        <div className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10">
           <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
             <div>
               <h3 className="text-xl md:text-2xl font-morabba font-bold text-beige-100">

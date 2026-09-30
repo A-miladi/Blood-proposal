@@ -1,11 +1,5 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { useReveal } from "@/hooks/useReveal";
-
-const delay = (ms: number): CSSProperties =>
-  ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
-
 const HIGHLIGHTS = [
   {
     id: "one-platform",
@@ -52,19 +46,13 @@ const ACCENT_BORDER = {
 };
 
 export const ClosingShowcase = () => {
-  const sectionRef = useReveal<HTMLElement>();
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="showcase-closing-title"
       className="relative w-full py-24 px-4 lg:px-0 font-iransans overflow-hidden"
     >
       <div className="container mx-auto relative z-10">
-        <div
-          className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/50 via-primary-900/40 to-primary-800/50 backdrop-blur-sm px-6 sm:px-12 py-16"
-          data-reveal="fade-up"
-        >
+        <div className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/50 via-primary-900/40 to-primary-800/50 backdrop-blur-sm px-6 sm:px-12 py-16">
           <div
             className="absolute inset-0 opacity-[0.20] pointer-events-none"
             style={{
@@ -77,7 +65,6 @@ export const ClosingShowcase = () => {
           <div className="relative max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-8">
               <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
               </span>
               <span className="text-blue-200 text-sm font-medium tracking-wide">
@@ -105,11 +92,7 @@ export const ClosingShowcase = () => {
           </div>
 
           {/* چهار نکته کلیدی */}
-          <ul
-            className="relative grid grid-cols-2 lg:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto"
-            data-reveal="fade-up"
-            style={delay(160)}
-          >
+          <ul className="relative grid grid-cols-2 lg:grid-cols-4 gap-4 mt-14 max-w-4xl mx-auto">
             {HIGHLIGHTS.map((h) => (
               <li
                 key={h.id}
@@ -148,11 +131,7 @@ export const ClosingShowcase = () => {
           />
 
           {/* امضا */}
-          <div
-            className="relative text-center"
-            data-reveal="fade-up"
-            style={delay(240)}
-          >
+          <div className="relative text-center">
             <p className="text-xl md:text-2xl font-morabba font-bold text-beige-100 leading-snug">
               آماده‌ایم تا این پلتفرم را
               <br />
