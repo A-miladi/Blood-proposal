@@ -204,7 +204,7 @@ const PRIORITY_META: Record<
 /* ============ Component ============ */
 export const ProblemsSection = () => {
   return (
-    <section className="relative w-full overflow-hidden px-4 py-16 font-iransans lg:px-0">
+    <section className="relative w-full overflow-hidden px-4 py-12 font-iransans lg:px-0">
       <div className="container relative z-10 mx-auto">
         {/* ==== هدر ==== */}
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -234,12 +234,12 @@ export const ProblemsSection = () => {
           </div>
 
           {/* Stat Cards */}
-          <div className="flex shrink-0 flex-wrap gap-3">
+          <div className="grid grid-cols-4 gap-2">
             {STAT_CARDS.map((stat) => (
               <div
                 key={stat.label}
                 className={[
-                  "min-w-[80px] rounded-xl border border-primary-900/10 bg-white-50/60 px-4 py-3 text-center backdrop-blur-sm dark:border-beige-200/10 dark:bg-primary-800/40",
+                  "min-w-[80px] rounded-xl border border-primary-900/10 bg-white-50/10 px-4 py-3 text-center backdrop-blur-sm dark:border-beige-200/10 dark:bg-primary-800/40",
                   stat.tone === "critical"
                     ? "ring-1 ring-red-600/30 dark:ring-red-500/30"
                     : "",
@@ -257,7 +257,7 @@ export const ProblemsSection = () => {
         </div>
 
         {/* ==== نمودار توزیع ==== */}
-        <div className="mb-10">
+        <div className="mb-2">
           <ProblemsChart
             title="توزیع چالش‌ها بر اساس حوزه"
             totalLabel="۱۶ چالش"

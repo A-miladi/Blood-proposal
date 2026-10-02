@@ -59,7 +59,7 @@ export const ProblemsChart = ({
   totalLabel = "۱۶ چالش",
   showSortToggle = true,
 }: ProblemsChartProps) => {
-  const [sortBy, setSortBy] = useState<SortMode>("count");
+  const [sortBy, setSortBy] = useState<SortMode>("priority");
 
   const sortedData = useMemo(() => {
     const copy = [...data];
@@ -146,12 +146,12 @@ export const ProblemsChart = ({
               </span>
 
               <div
-                className="relative h-1 flex-1 overflow-hidden rounded-full bg-beige-300/60 dark:bg-primary-900/40"
+                className="relative h-[3px] flex-1 overflow-hidden rounded-full bg-beige-300/60 dark:bg-primary-900/40"
                 aria-hidden="true"
               >
                 <div
                   style={{ width: `${percent}%` }}
-                  className="absolute right-0 top-0 h-full rounded-full bg-gradient-to-l from-primary-50 to-primary-400 dark:from-primary-500 dark:to-primary-200"
+                  className="absolute right-0 top-0 h-full rounded-full bg-gradient-to-l from-primary-50 to-primary-400 dark:from-primary-700 dark:to-primary-200"
                 />
               </div>
 

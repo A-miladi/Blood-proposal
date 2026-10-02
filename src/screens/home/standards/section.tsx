@@ -154,7 +154,7 @@ export const StandardsSection = () => {
   return (
     <section
       aria-labelledby="standards-title"
-      className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0"
+      className="relative w-full overflow-hidden px-4 py-12 font-iransans lg:px-0"
     >
       <div className="container relative z-10 mx-auto">
         {/* ==== سربرگ ==== */}

@@ -249,7 +249,7 @@ function PageCard({ page, size = "sm" }: PageCardProps) {
 /* ============ کامپوننت اصلی ============ */
 export const SolutionSection = () => {
   return (
-    <section className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0">
+    <section className="relative w-full overflow-hidden px-4 py-12 font-iransans lg:px-0">
       <div className="container relative z-10 mx-auto">
         {/* ==== سربرگ ==== */}
         <div className="mb-12 max-w-3xl">
@@ -264,7 +264,7 @@ export const SolutionSection = () => {
 
           <h2
             id="solution-title"
-            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
+            className="font-morabba text-2xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             ما یک سایت طراحی نمی‌کنیم؛
             <br />
@@ -283,12 +283,11 @@ export const SolutionSection = () => {
           </p>
         </div>
 
-        {/* ==== خلاصه عددی ==== */}
-        <ul className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <ul className="mb-16 grid grid-cols-2 gap-1 sm:grid-cols-4">
           {SUMMARY_STATS.map((s) => (
             <li
               key={s.label}
-              className="rounded-2xl border border-primary-900/10 bg-white-50/60 px-5 py-5 text-center backdrop-blur-sm dark:border-beige-200/10 dark:bg-primary-800/40"
+              className="rounded-2xl border border-primary-900/10 bg-white-50/10 px-5 py-5 text-center backdrop-blur-sm dark:border-beige-200/10 dark:bg-primary-800/40"
             >
               <p className="font-morabba text-3xl font-bold text-red-600 sm:text-4xl dark:text-red-500">
                 {s.value}
