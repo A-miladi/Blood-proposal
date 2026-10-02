@@ -23,25 +23,28 @@ const ACCENT: Record<
   }
 > = {
   blue: {
-    text: "text-blue-300",
-    border: "border-blue-500/30",
-    bg: "bg-blue-600/[0.08]",
-    dot: "bg-blue-400",
-    badge: "bg-blue-900/40 border-blue-500/30 text-blue-300",
+    text: "text-blue-700 dark:text-blue-300",
+    border: "border-blue-600/30 dark:border-blue-500/30",
+    bg: "bg-blue-600/[0.06] dark:bg-blue-600/[0.08]",
+    dot: "bg-blue-600 dark:bg-blue-400",
+    badge:
+      "bg-blue-100 border-blue-600/30 text-blue-700 dark:bg-blue-900/40 dark:border-blue-500/30 dark:text-blue-300",
   },
   red: {
-    text: "text-red-300",
-    border: "border-red-500/30",
-    bg: "bg-red-600/[0.08]",
-    dot: "bg-red-400",
-    badge: "bg-red-900/40 border-red-500/30 text-red-300",
+    text: "text-red-700 dark:text-red-300",
+    border: "border-red-600/30 dark:border-red-500/30",
+    bg: "bg-red-600/[0.06] dark:bg-red-600/[0.08]",
+    dot: "bg-red-600 dark:bg-red-400",
+    badge:
+      "bg-red-100 border-red-600/30 text-red-700 dark:bg-red-900/40 dark:border-red-500/30 dark:text-red-300",
   },
   beige: {
-    text: "text-beige-300",
-    border: "border-beige-500/25",
-    bg: "bg-beige-500/[0.05]",
-    dot: "bg-beige-400",
-    badge: "bg-primary-800/60 border-beige-500/25 text-beige-300",
+    text: "text-primary-700 dark:text-beige-300",
+    border: "border-primary-900/15 dark:border-beige-500/25",
+    bg: "bg-white-50/60 dark:bg-beige-500/[0.05]",
+    dot: "bg-primary-600 dark:bg-beige-400",
+    badge:
+      "bg-beige-100 border-primary-900/20 text-primary-700 dark:bg-primary-800/60 dark:border-beige-500/25 dark:text-beige-300",
   },
 };
 
@@ -106,22 +109,22 @@ export const KpiSection = () => {
   return (
     <section
       aria-labelledby="kpi-title"
-      className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0"
     >
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
-            <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+      <div className="container relative z-10 mx-auto">
+        <div className="mb-14 max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
             </span>
-            <span className="text-blue-200 text-sm font-medium tracking-wide">
+            <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
               بخش اول — شاخص‌های موفقیت
             </span>
           </div>
 
           <h2
             id="kpi-title"
-            className="text-4xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.2]"
+            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             موفقیت را چطور
             <br />
@@ -130,38 +133,38 @@ export const KpiSection = () => {
             </span>
           </h2>
 
-          <p className="text-lg text-beige-300 leading-relaxed mt-5">
+          <p className="mt-5 text-lg leading-relaxed text-primary-700 dark:text-beige-300">
             هر شاخص با یک بنچمارک بین‌المللی مقایسه می‌شود تا بدانیم کجا هستیم و
             به کجا می‌رویم.
           </p>
         </div>
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {KPI_GROUPS.map((group) => {
             const a = ACCENT[group.accent];
             return (
               <li
                 key={group.id}
                 className={[
-                  "group relative rounded-3xl border backdrop-blur-sm p-6 sm:p-7",
+                  "group relative rounded-3xl border p-6 backdrop-blur-sm sm:p-7",
                   a.border,
                   a.bg,
                 ].join(" ")}
               >
                 {/* سربرگ */}
-                <div className="flex items-center justify-between gap-3 mb-5">
+                <div className="mb-5 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <span
-                      className={`w-2.5 h-2.5 rounded-full ${a.dot}`}
+                      className={`h-2.5 w-2.5 rounded-full ${a.dot}`}
                       aria-hidden="true"
                     />
-                    <h3 className="text-lg font-morabba font-bold text-beige-50">
+                    <h3 className="font-morabba text-lg font-bold text-primary-900 dark:text-beige-50">
                       {group.title}
                     </h3>
                   </div>
                   <span
                     className={[
-                      "text-[10px] font-medium px-2.5 py-1 rounded-full border",
+                      "rounded-full border px-2.5 py-1 text-[10px] font-medium",
                       a.badge,
                     ].join(" ")}
                   >
@@ -174,14 +177,14 @@ export const KpiSection = () => {
                   {group.items.map((item) => (
                     <li
                       key={item.label}
-                      className="flex items-start justify-between gap-4 pb-3 border-b border-beige-200/[0.06] last:border-0 last:pb-0"
+                      className="flex items-start justify-between gap-4 border-b border-primary-900/[0.08] pb-3 last:border-0 last:pb-0 dark:border-beige-200/[0.06]"
                     >
-                      <span className="text-sm text-beige-300 leading-snug">
+                      <span className="text-sm leading-snug text-primary-700 dark:text-beige-300">
                         {item.label}
                       </span>
                       <span
                         className={[
-                          "text-[11px] font-medium shrink-0 text-left",
+                          "shrink-0 text-left text-[11px] font-medium",
                           a.text,
                         ].join(" ")}
                       >
@@ -202,7 +205,7 @@ export const KpiSection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>

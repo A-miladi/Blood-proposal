@@ -183,47 +183,44 @@ const PRIORITY_META: Record<
 > = {
   critical: {
     label: "بحرانی",
-    dot: "bg-red-500",
-    ring: "ring-red-500/40",
-    text: "text-red-400",
+    dot: "bg-red-600 dark:bg-red-500",
+    ring: "ring-red-600/40 dark:ring-red-500/40",
+    text: "text-red-700 dark:text-red-400",
   },
   high: {
     label: "بالا",
-    dot: "bg-amber-400",
-    ring: "ring-amber-400/30",
-    text: "text-amber-300",
+    dot: "bg-amber-500 dark:bg-amber-400",
+    ring: "ring-amber-500/40 dark:ring-amber-400/30",
+    text: "text-amber-700 dark:text-amber-300",
   },
   medium: {
     label: "متوسط",
-    dot: "bg-emerald-400",
-    ring: "ring-emerald-400/30",
-    text: "text-emerald-300",
+    dot: "bg-emerald-600 dark:bg-emerald-400",
+    ring: "ring-emerald-600/40 dark:ring-emerald-400/30",
+    text: "text-emerald-700 dark:text-emerald-300",
   },
 };
 
 /* ============ Component ============ */
 export const ProblemsSection = () => {
   return (
-    <section
-      aria-labelledby="problems-title"
-      className="relative w-full py-16 px-4 lg:px-0 font-iransans overflow-hidden"
-    >
-      <div className="container mx-auto relative z-10">
+    <section className="relative w-full overflow-hidden px-4 py-16 font-iransans lg:px-0">
+      <div className="container relative z-10 mx-auto">
         {/* ==== هدر ==== */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-red-900/30 backdrop-blur-xl border border-red-600/30 rounded-full px-4 py-1.5 mb-4">
-              <span className="relative flex w-2 h-2" aria-hidden="true">
-                <span className="relative inline-flex rounded-full w-2 h-2 bg-red-500" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-600/30 bg-red-100/70 px-4 py-1.5 backdrop-blur-xl dark:bg-red-900/30">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
               </span>
-              <span className="text-red-300 text-xs font-medium tracking-wide">
+              <span className="text-xs font-medium tracking-wide text-red-700 dark:text-red-300">
                 بخش اول — مسئله‌شناسی
               </span>
             </div>
 
             <h2
               id="problems-title"
-              className="text-3xl md:text-4xl font-morabba font-bold text-beige-50 flex flex-wrap gap-x-2"
+              className="flex flex-wrap gap-x-2 font-morabba text-3xl font-bold text-primary-900 md:text-4xl dark:text-beige-50"
             >
               <span>امروز با چه چالش‌هایی</span>
               <span className="bg-gradient-to-l from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
@@ -231,30 +228,27 @@ export const ProblemsSection = () => {
               </span>
             </h2>
 
-            <p className="text-base text-beige-300 leading-relaxed mt-3">
+            <p className="mt-3 text-base leading-relaxed text-primary-700 dark:text-beige-300">
               پیش از ارائه هر راه‌حلی، باید عمق مسئله را ببینیم.
             </p>
           </div>
 
           {/* Stat Cards */}
-          <div className="flex flex-wrap gap-3 shrink-0">
+          <div className="flex shrink-0 flex-wrap gap-3">
             {STAT_CARDS.map((stat) => (
               <div
                 key={stat.label}
                 className={[
-                  "bg-primary-800/40 backdrop-blur-sm border border-beige-200/10 rounded-xl px-4 py-3 min-w-[80px] text-center",
-                  stat.tone === "critical" ? "ring-1 ring-red-500/30" : "",
+                  "min-w-[80px] rounded-xl border border-primary-900/10 bg-white-50/60 px-4 py-3 text-center backdrop-blur-sm dark:border-beige-200/10 dark:bg-primary-800/40",
+                  stat.tone === "critical"
+                    ? "ring-1 ring-red-600/30 dark:ring-red-500/30"
+                    : "",
                 ].join(" ")}
               >
-                <p
-                  className={[
-                    "text-xl font-morabba font-bold",
-                    stat.tone === "critical" ? "text-red-500" : "text-red-500",
-                  ].join(" ")}
-                >
+                <p className="font-morabba text-xl font-bold text-red-600 dark:text-red-500">
                   {stat.value}
                 </p>
-                <p className="text-[10px] text-beige-400 mt-0.5">
+                <p className="mt-0.5 text-[10px] text-primary-500 dark:text-beige-400">
                   {stat.label}
                 </p>
               </div>
@@ -271,12 +265,14 @@ export const ProblemsSection = () => {
         </div>
 
         {/* ==== راهنمای اولویت ==== */}
-        <div className="flex flex-wrap items-center gap-4 mb-5 text-[11px] text-beige-400">
-          <span className="font-medium text-beige-300">راهنمای اولویت:</span>
+        <div className="mb-5 flex flex-wrap items-center gap-4 text-[11px] text-primary-500 dark:text-beige-400">
+          <span className="font-medium text-primary-700 dark:text-beige-300">
+            راهنمای اولویت:
+          </span>
           {(Object.keys(PRIORITY_META) as Priority[]).map((key) => (
             <span key={key} className="inline-flex items-center gap-2">
               <span
-                className={`w-2 h-2 rounded-full ${PRIORITY_META[key].dot}`}
+                className={`h-2 w-2 rounded-full ${PRIORITY_META[key].dot}`}
                 aria-hidden="true"
               />
               <span className={PRIORITY_META[key].text}>
@@ -287,57 +283,57 @@ export const ProblemsSection = () => {
         </div>
 
         {/* ==== گرید کارت‌ها ==== */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {PROBLEMS.map((problem) => {
             const meta = PRIORITY_META[problem.priority];
             return (
               <li
                 key={problem.id}
                 className={[
-                  "group relative cursor-pointer bg-primary-800/40 backdrop-blur-sm",
-                  "border border-beige-200/10 hover:border-red-600/50 rounded-xl p-4",
+                  "group relative cursor-pointer rounded-xl border border-primary-900/10 bg-white-50/60 backdrop-blur-sm dark:border-beige-200/10 dark:bg-primary-800/40",
+                  "p-4 hover:border-red-600/50 dark:hover:border-red-600/50",
                   problem.priority === "critical"
-                    ? "ring-1 ring-red-500/20"
+                    ? "ring-1 ring-red-600/20 dark:ring-red-500/20"
                     : "",
                 ].join(" ")}
               >
                 <div
-                  className="absolute inset-0 bg-gradient-to-br from-red-600/0 to-red-600/0 group-hover:from-red-600/[0.08] group-hover:to-transparent rounded-xl"
+                  className="absolute inset-0 rounded-xl bg-gradient-to-br from-red-600/0 to-red-600/0 group-hover:from-red-600/[0.08] group-hover:to-transparent"
                   aria-hidden="true"
                 />
 
                 {/* Header: ID + Priority Dot + Tag */}
-                <div className="relative flex items-center justify-between mb-2.5">
+                <div className="relative mb-2.5 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span
-                      className="text-2xl font-morabba font-bold text-primary-600/70 group-hover:text-red-600/50"
+                      className="font-morabba text-2xl font-bold text-primary-300 group-hover:text-red-600/50 dark:text-primary-600/70 dark:group-hover:text-red-600/50"
                       aria-hidden="true"
                     >
                       {problem.id}
                     </span>
                     <span
-                      className={`w-1.5 h-1.5 rounded-full ${meta.dot} ${meta.ring} ring-2`}
+                      className={`h-1.5 w-1.5 rounded-full ${meta.dot} ${meta.ring} ring-2`}
                       title={`اولویت: ${meta.label}`}
                       aria-label={`اولویت: ${meta.label}`}
                     />
                   </div>
-                  <span className="text-[10px] text-beige-400 bg-primary-900/60 border border-primary-700/50 rounded-full px-2 py-0.5">
+                  <span className="rounded-full border border-primary-900/15 bg-beige-100/60 px-2 py-0.5 text-[10px] text-primary-600 dark:border-primary-700/50 dark:bg-primary-900/60 dark:text-beige-400">
                     {problem.tag}
                   </span>
                 </div>
 
-                <h3 className="relative text-sm font-morabba font-bold text-beige-50 mb-1.5 group-hover:text-red-400 leading-snug">
+                <h3 className="relative mb-1.5 font-morabba text-sm font-bold leading-snug text-primary-900 group-hover:text-red-700 dark:text-beige-50 dark:group-hover:text-red-400">
                   {problem.title}
                 </h3>
 
-                <p className="relative text-xs text-beige-400 leading-relaxed line-clamp-3">
+                <p className="relative line-clamp-3 text-xs leading-relaxed text-primary-600 dark:text-beige-400">
                   {problem.description}
                 </p>
 
                 {/* Solution Link */}
-                <div className="relative mt-3 pt-2.5 border-t border-beige-200/[0.06] flex items-center gap-1.5">
+                <div className="relative mt-3 flex items-center gap-1.5 border-t border-primary-900/[0.08] pt-2.5 dark:border-beige-200/[0.06]">
                   <svg
-                    className="w-3 h-3 text-red-500/70 shrink-0"
+                    className="h-3 w-3 shrink-0 text-red-600/80 dark:text-red-500/70"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -348,9 +344,9 @@ export const ProblemsSection = () => {
                   >
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                   </svg>
-                  <span className="text-[10px] text-beige-500 truncate">
+                  <span className="truncate text-[10px] text-primary-500 dark:text-beige-500">
                     راه‌حل:{" "}
-                    <span className="text-beige-300 font-medium">
+                    <span className="font-medium text-primary-700 dark:text-beige-300">
                       {problem.solution}
                     </span>
                   </span>
@@ -365,14 +361,18 @@ export const ProblemsSection = () => {
           })}
         </ul>
 
-        {/* ==== پیام پایانی ==== */}
         <div className="mt-10 text-center">
-          <p className="inline-block text-xs text-beige-400 bg-primary-800/40 backdrop-blur-sm border border-primary-700/50 rounded-full px-5 py-2">
+          <p className="inline-block rounded-full border border-primary-900/15 bg-white-50/60 px-5 py-2 text-xs text-primary-600 backdrop-blur-sm dark:border-primary-700/50 dark:bg-primary-800/40 dark:text-beige-400">
             این چالش‌ها نتیجه بررسی{" "}
-            <span className="text-red-400 font-medium">گزارش‌های داخلی</span>،{" "}
-            <span className="text-red-400 font-medium">مطالعات علمی ایران</span>{" "}
+            <span className="font-medium text-red-700 dark:text-red-400">
+              گزارش‌های داخلی
+            </span>
+            ،{" "}
+            <span className="font-medium text-red-700 dark:text-red-400">
+              مطالعات علمی ایران
+            </span>{" "}
             و{" "}
-            <span className="text-red-400 font-medium">
+            <span className="font-medium text-red-700 dark:text-red-400">
               نمونه‌های بین‌المللی
             </span>{" "}
             است.
@@ -381,7 +381,7 @@ export const ProblemsSection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent"
         aria-hidden="true"
       />
     </section>

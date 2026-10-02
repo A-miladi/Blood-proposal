@@ -26,22 +26,22 @@ const ACCENT: Record<
   }
 > = {
   blue: {
-    text: "text-blue-300",
-    border: "border-blue-500/30",
-    bg: "bg-blue-600/[0.08]",
-    dot: "bg-blue-400",
+    text: "text-blue-700 dark:text-blue-300",
+    border: "border-blue-600/30 dark:border-blue-500/30",
+    bg: "bg-blue-600/[0.06] dark:bg-blue-600/[0.08]",
+    dot: "bg-blue-600 dark:bg-blue-400",
   },
   red: {
-    text: "text-red-300",
-    border: "border-red-500/30",
-    bg: "bg-red-600/[0.08]",
-    dot: "bg-red-400",
+    text: "text-red-700 dark:text-red-300",
+    border: "border-red-600/30 dark:border-red-500/30",
+    bg: "bg-red-600/[0.06] dark:bg-red-600/[0.08]",
+    dot: "bg-red-600 dark:bg-red-400",
   },
   beige: {
-    text: "text-beige-300",
-    border: "border-beige-500/25",
-    bg: "bg-beige-500/[0.05]",
-    dot: "bg-beige-400",
+    text: "text-primary-700 dark:text-beige-300",
+    border: "border-primary-900/15 dark:border-beige-500/25",
+    bg: "bg-white-50/60 dark:bg-beige-500/[0.05]",
+    dot: "bg-primary-600 dark:bg-beige-400",
   },
 };
 
@@ -54,7 +54,7 @@ const IconDonor = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-6 h-6"
+    className="h-6 w-6"
   >
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />
@@ -69,7 +69,7 @@ const IconStaff = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-6 h-6"
+    className="h-6 w-6"
   >
     <rect x="3" y="3" width="7" height="9" rx="1.5" />
     <rect x="14" y="3" width="7" height="5" rx="1.5" />
@@ -86,7 +86,7 @@ const IconCenter = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-6 h-6"
+    className="h-6 w-6"
   >
     <path d="M3 21h18" />
     <path d="M5 21V7l7-5 7 5v14" />
@@ -102,7 +102,7 @@ const IconProvince = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-6 h-6"
+    className="h-6 w-6"
   >
     <path d="M9 20l-6-3V5l6 3 6-3 6 3v12l-6-3-6 3z" />
     <path d="M9 8v12M15 5v12" />
@@ -117,7 +117,7 @@ const IconDirector = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-6 h-6"
+    className="h-6 w-6"
   >
     <path d="M3 3v18h18" />
     <path d="M7 14l4-4 4 4 5-5" />
@@ -132,7 +132,7 @@ const IconOrg = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-6 h-6"
+    className="h-6 w-6"
   >
     <circle cx="12" cy="12" r="9" />
     <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
@@ -234,23 +234,23 @@ export const ValueSection = () => {
   return (
     <section
       aria-labelledby="value-title"
-      className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0"
     >
-      <div className="container mx-auto relative z-10">
+      <div className="container relative z-10 mx-auto">
         {/* ==== سربرگ ==== */}
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
-            <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+        <div className="mb-14 max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
             </span>
-            <span className="text-blue-200 text-sm font-medium tracking-wide">
+            <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
               بخش هفتم — ارزش
             </span>
           </div>
 
           <h2
             id="value-title"
-            className="text-4xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.2]"
+            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             این پلتفرم برای چه کسی
             <br />
@@ -259,30 +259,30 @@ export const ValueSection = () => {
             </span>
           </h2>
 
-          <p className="text-lg text-beige-300 leading-relaxed mt-5">
+          <p className="mt-5 text-lg leading-relaxed text-primary-700 dark:text-beige-300">
             ارزش این پروژه در سطح یک کاربر خلاصه نمی‌شود؛ از اهداکننده تا
             مدیرکل، هر کس سهم خودش را می‌گیرد.
           </p>
         </div>
 
         {/* ==== ۶ کارت ارزش ==== */}
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {VALUES.map((v) => {
             const a = ACCENT[v.accent];
             return (
               <li
                 key={v.id}
                 className={[
-                  "group relative rounded-3xl border backdrop-blur-sm p-6",
+                  "group relative rounded-3xl border p-6 backdrop-blur-sm",
                   a.border,
                   a.bg,
                 ].join(" ")}
               >
                 {/* سربرگ کارت */}
-                <div className="flex items-start gap-4 mb-4">
+                <div className="mb-4 flex items-start gap-4">
                   <div
                     className={[
-                      "w-12 h-12 rounded-2xl flex items-center justify-center border shrink-0",
+                      "flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border",
                       a.border,
                       a.bg,
                       a.text,
@@ -291,14 +291,14 @@ export const ValueSection = () => {
                     {v.icon}
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-lg font-morabba font-bold text-beige-50 leading-tight">
+                    <h3 className="font-morabba text-lg font-bold leading-tight text-primary-900 dark:text-beige-50">
                       {v.title}
                     </h3>
-                    <p className={`text-xs mt-0.5 ${a.text}`}>{v.subtitle}</p>
+                    <p className={`mt-0.5 text-xs ${a.text}`}>{v.subtitle}</p>
                   </div>
                 </div>
 
-                <p className="text-sm text-beige-400 leading-relaxed mb-5">
+                <p className="mb-5 text-sm leading-relaxed text-primary-600 dark:text-beige-400">
                   {v.description}
                 </p>
 
@@ -306,10 +306,10 @@ export const ValueSection = () => {
                   {v.benefits.map((b) => (
                     <li
                       key={b}
-                      className="flex items-start gap-2.5 text-sm text-beige-300"
+                      className="flex items-start gap-2.5 text-sm text-primary-700 dark:text-beige-300"
                     >
                       <span
-                        className={`mt-2 w-1.5 h-1.5 rounded-full shrink-0 ${a.dot}`}
+                        className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${a.dot}`}
                         aria-hidden="true"
                       />
                       <span>{b}</span>
@@ -328,7 +328,7 @@ export const ValueSection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>

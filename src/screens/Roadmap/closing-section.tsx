@@ -23,21 +23,21 @@ const PILLARS = [
 ];
 
 const ACCENT_TEXT = {
-  blue: "text-blue-300",
-  beige: "text-beige-300",
-  red: "text-red-300",
+  blue: "text-blue-700 dark:text-blue-300",
+  beige: "text-primary-700 dark:text-beige-300",
+  red: "text-red-700 dark:text-red-300",
 };
 
 const ACCENT_DOT = {
-  blue: "bg-blue-400",
-  beige: "bg-beige-400",
-  red: "bg-red-400",
+  blue: "bg-blue-600 dark:bg-blue-400",
+  beige: "bg-primary-600 dark:bg-beige-400",
+  red: "bg-red-600 dark:bg-red-400",
 };
 
 const ACCENT_BORDER = {
-  blue: "border-blue-500/30",
-  beige: "border-beige-500/25",
-  red: "border-red-500/30",
+  blue: "border-blue-600/30 dark:border-blue-500/30",
+  beige: "border-primary-900/15 dark:border-beige-500/25",
+  red: "border-red-600/30 dark:border-red-500/30",
 };
 
 /* ============ کامپوننت ============ */
@@ -45,14 +45,14 @@ export const ClosingSection = () => {
   return (
     <section
       aria-labelledby="closing-title"
-      className="relative w-full py-24 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 py-24 font-iransans lg:px-0"
     >
-      <div className="container mx-auto relative z-10">
+      <div className="container relative z-10 mx-auto">
         {/* ==== بلوک اصلی ==== */}
-        <div className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/50 via-primary-900/40 to-primary-800/50 backdrop-blur-sm px-6 sm:px-12 py-16">
+        <div className="relative overflow-hidden rounded-3xl border border-primary-900/10 bg-gradient-to-br from-beige-100/70 via-beige-50/50 to-beige-100/70 px-6 py-16 backdrop-blur-sm sm:px-12 dark:border-beige-200/10 dark:from-primary-800/50 dark:via-primary-900/40 dark:to-primary-800/50">
           {/* هاله‌های نورانی */}
           <div
-            className="absolute inset-0 opacity-[0.20] pointer-events-none"
+            className="pointer-events-none absolute inset-0 opacity-[0.12] dark:opacity-[0.20]"
             style={{
               backgroundImage:
                 "radial-gradient(circle at 20% 25%, rgba(18,58,99,0.7), transparent 45%), radial-gradient(circle at 80% 75%, rgba(161,27,46,0.6), transparent 45%)",
@@ -60,13 +60,13 @@ export const ClosingSection = () => {
             aria-hidden="true"
           />
 
-          <div className="relative max-w-4xl mx-auto text-center">
+          <div className="relative mx-auto max-w-4xl text-center">
             {/* برچسب */}
-            <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-8">
-              <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-                <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+              <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
               </span>
-              <span className="text-blue-200 text-sm font-medium tracking-wide">
+              <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
                 پیام پایانی
               </span>
             </div>
@@ -74,48 +74,47 @@ export const ClosingSection = () => {
             {/* پیام اصلی */}
             <h2
               id="closing-title"
-              className="text-3xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.25]"
+              className="font-morabba text-3xl font-bold leading-[1.25] text-primary-900 md:text-5xl dark:text-beige-50"
             >
               ما یک سایت طراحی نمی‌کنیم.
               <br />
               ما سه پنل جدا نمی‌سازیم.
               <br />
-              <span className="bg-gradient-to-l from-blue-300 via-beige-100 to-red-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-l from-blue-500 via-primary-700 to-red-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-beige-100 dark:to-red-400">
                 ما یک پلتفرم یکپارچه می‌سازیم.
               </span>
             </h2>
 
             {/* توضیح */}
-            <p className="text-base md:text-lg text-beige-300 leading-relaxed mt-8 max-w-3xl mx-auto">
+            <p className="mx-auto mt-8 max-w-3xl text-base leading-relaxed text-primary-700 md:text-lg dark:text-beige-300">
               اهداکننده جذب و همراهی می‌شود، کارشناس توانمند می‌شود، و مدیر
               تصویر واقعی سازمان را می‌بیند — همه در یک جریان داده واحد.
             </p>
           </div>
 
           {/* سه ستون */}
-          <ul className="relative grid grid-cols-1 sm:grid-cols-3 gap-4 mt-14 max-w-3xl mx-auto">
+          <ul className="relative mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
             {PILLARS.map((p) => (
               <li
                 key={p.id}
                 className={[
-                  "rounded-2xl border backdrop-blur-sm px-5 py-6 text-center",
+                  "rounded-2xl border bg-white-50/60 px-5 py-6 text-center backdrop-blur-sm dark:bg-primary-900/40",
                   ACCENT_BORDER[p.accent],
-                  "bg-primary-900/40",
                 ].join(" ")}
               >
                 <span
                   className={[
-                    "inline-block w-2.5 h-2.5 rounded-full mb-3",
+                    "mb-3 inline-block h-2.5 w-2.5 rounded-full",
                     ACCENT_DOT[p.accent],
                   ].join(" ")}
                   aria-hidden="true"
                 />
-                <p className="text-lg font-morabba font-bold text-beige-50 leading-tight">
+                <p className="font-morabba text-lg font-bold leading-tight text-primary-900 dark:text-beige-50">
                   {p.title}
                 </p>
                 <p
                   className={[
-                    "text-xs mt-1 font-medium",
+                    "mt-1 text-xs font-medium",
                     ACCENT_TEXT[p.accent],
                   ].join(" ")}
                 >
@@ -127,13 +126,13 @@ export const ClosingSection = () => {
 
           {/* خط جداکننده */}
           <div
-            className="relative h-px max-w-lg mx-auto my-12 bg-gradient-to-r from-transparent via-beige-200/20 to-transparent"
+            className="relative mx-auto my-12 h-px max-w-lg bg-gradient-to-r from-transparent via-primary-900/20 to-transparent dark:via-beige-200/20"
             aria-hidden="true"
           />
 
           {/* شعار نهایی */}
           <div className="relative text-center">
-            <p className="text-xl md:text-2xl font-morabba font-bold text-beige-100 leading-snug">
+            <p className="font-morabba text-xl font-bold leading-snug text-primary-800 md:text-2xl dark:text-beige-100">
               یک پلتفرم.
               <br />
               سه تجربه. یک جریان داده.
@@ -142,16 +141,16 @@ export const ClosingSection = () => {
             {/* امضا */}
             <div className="mt-10 flex flex-col items-center gap-2">
               <div
-                className="w-16 h-px bg-gradient-to-r from-transparent via-red-500/60 to-transparent"
+                className="h-px w-16 bg-gradient-to-r from-transparent via-red-500/60 to-transparent"
                 aria-hidden="true"
               />
-              <p className="text-2xl font-morabba font-bold text-red-500 mt-3">
+              <p className="mt-3 font-morabba text-2xl font-bold text-red-600 dark:text-red-500">
                 فدورا
               </p>
-              <p className="text-xs text-beige-500">
+              <p className="text-xs text-primary-500 dark:text-beige-500">
                 تیم محصول دیجیتال تمام‌کامل
               </p>
-              <p className="text-[10px] text-beige-600 max-w-md text-center leading-relaxed">
+              <p className="max-w-md text-center text-[10px] leading-relaxed text-primary-500 dark:text-beige-600">
                 راهبرد محصول · تجربه کاربری · وب · بک‌اند · یکپارچه‌سازی · دواپس
                 · تحلیل · سئو · آمادگی هوش مصنوعی
               </p>
@@ -161,7 +160,7 @@ export const ClosingSection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>

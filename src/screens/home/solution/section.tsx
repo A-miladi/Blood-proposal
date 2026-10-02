@@ -36,7 +36,6 @@ type PageShot = {
 };
 
 /* ============ داده‌ها ============ */
-
 const PAGES: PageShot[] = [
   {
     id: "home",
@@ -181,60 +180,60 @@ function PageCard({ page, size = "sm" }: PageCardProps) {
   return (
     <article
       className={[
-        "group relative rounded-3xl h-[550px] overflow-hidden border backdrop-blur-sm",
+        "group relative h-[550px] overflow-hidden rounded-3xl border backdrop-blur-sm",
         a.border,
         a.bg,
       ].join(" ")}
     >
       <div
         className={[
-          "relative w-full h-96 overflow-hidden bg-primary-900/60 border-b",
+          "relative h-96 w-full overflow-hidden border-b bg-beige-100/60 dark:bg-primary-900/60",
           a.border,
           isLarge ? "aspect-[16/10]" : "aspect-[16/11]",
         ].join(" ")}
       >
         <div
-          className="absolute top-0 left-0 right-0 z-10 flex items-center gap-1.5 px-3 py-2 bg-primary-900/70 backdrop-blur-sm border-b border-beige-200/5"
+          className="absolute left-0 top-0 z-10 flex items-center gap-1.5 px-3 py-2  dark:bg-primary-900/70"
           aria-hidden="true"
         >
-          <span className="w-2 h-2 rounded-full bg-red-500/60" />
-          <span className="w-2 h-2 rounded-full bg-beige-500/40" />
-          <span className="w-2 h-2 rounded-full bg-green-600/60" />
+          <span className="h-2 w-2 rounded-full bg-red-500/60" />
+          <span className="h-2 w-2 rounded-full bg-primary-500/40 dark:bg-beige-500/40" />
+          <span className="h-2 w-2 rounded-full bg-green-600/60" />
         </div>
 
         <Image
           src={page.image}
           alt={page.title}
           fill
-          className="object-center pt-7"
+          className="object-center pt-6"
           loading="lazy"
         />
 
         <div
-          className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent pointer-events-none"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-900/40 via-transparent to-transparent dark:from-primary-900/60"
           aria-hidden="true"
         />
       </div>
 
       <div className={isLarge ? "p-6 sm:p-7" : "p-5 sm:p-6"}>
-        <div className="flex items-center justify-between mb-2">
+        <div className="mb-2 flex items-center justify-between">
           <span className={`text-xs font-medium ${a.text}`}>
             {page.subtitle}
           </span>
           <span
-            className={`w-2 h-2 rounded-full ${a.dot}`}
+            className={`h-2 w-2 rounded-full ${a.dot}`}
             aria-hidden="true"
           />
         </div>
         <h4
           className={[
-            "font-morabba font-bold text-beige-50 mb-2 leading-snug",
+            "mb-2 font-morabba font-bold leading-snug text-primary-900 dark:text-beige-50",
             isLarge ? "text-xl sm:text-2xl" : "text-lg sm:text-xl",
           ].join(" ")}
         >
           {page.title}
         </h4>
-        <p className="text-sm text-beige-400 leading-relaxed">
+        <p className="text-sm leading-relaxed text-primary-600 dark:text-beige-400">
           {page.description}
         </p>
       </div>
@@ -250,25 +249,22 @@ function PageCard({ page, size = "sm" }: PageCardProps) {
 /* ============ کامپوننت اصلی ============ */
 export const SolutionSection = () => {
   return (
-    <section
-      aria-labelledby="solution-title"
-      className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
-    >
-      <div className="container mx-auto relative z-10">
+    <section className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0">
+      <div className="container relative z-10 mx-auto">
         {/* ==== سربرگ ==== */}
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
-            <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+        <div className="mb-12 max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
             </span>
-            <span className="text-blue-200 text-sm font-medium tracking-wide">
+            <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
               بخش دوم — پیشنهاد فدورا
             </span>
           </div>
 
           <h2
             id="solution-title"
-            className="text-4xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.2]"
+            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             ما یک سایت طراحی نمی‌کنیم؛
             <br />
@@ -277,9 +273,9 @@ export const SolutionSection = () => {
             </span>
           </h2>
 
-          <p className="text-lg text-beige-300 leading-relaxed mt-5">
+          <p className="mt-5 text-lg leading-relaxed text-primary-700 dark:text-beige-300">
             سامانه‌های فعلی سازمان حذف نمی‌شوند؛{" "}
-            <span className="text-beige-100 font-medium">
+            <span className="font-medium text-primary-900 dark:text-beige-100">
               اطلاعات و فرآیندهای پراکنده
             </span>{" "}
             در یک تجربه یکپارچه کنار هم قرار می‌گیرند. نتیجه: اهداکننده سرویس
@@ -288,37 +284,39 @@ export const SolutionSection = () => {
         </div>
 
         {/* ==== خلاصه عددی ==== */}
-        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
+        <ul className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {SUMMARY_STATS.map((s) => (
             <li
               key={s.label}
-              className="bg-primary-800/40 backdrop-blur-sm border border-beige-200/10 rounded-2xl px-5 py-5 text-center"
+              className="rounded-2xl border border-primary-900/10 bg-white-50/60 px-5 py-5 text-center backdrop-blur-sm dark:border-beige-200/10 dark:bg-primary-800/40"
             >
-              <p className="text-3xl sm:text-4xl font-morabba font-bold text-red-500">
+              <p className="font-morabba text-3xl font-bold text-red-600 sm:text-4xl dark:text-red-500">
                 {s.value}
               </p>
-              <p className="text-sm text-beige-400 mt-1.5">{s.label}</p>
+              <p className="mt-1.5 text-sm text-primary-600 dark:text-beige-400">
+                {s.label}
+              </p>
             </li>
           ))}
         </ul>
 
         {/* ==== نمایش پنج صفحه اصلی ==== */}
         <div className="mb-16">
-          <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h3 className="text-2xl md:text-3xl font-morabba font-bold text-beige-50">
+              <h3 className="font-morabba text-2xl font-bold text-primary-900 md:text-3xl dark:text-beige-50">
                 نگاهی به پنج صفحه اصلی
               </h3>
-              <p className="text-base text-beige-400 mt-2">
+              <p className="mt-2 text-base text-primary-600 dark:text-beige-400">
                 از نگاه اهداکننده تا میز مدیرعامل — همه در یک پلتفرم.
               </p>
             </div>
-            <span className="text-xs text-beige-500 bg-primary-900/60 border border-primary-700/50 rounded-full px-4 py-1.5">
+            <span className="rounded-full border border-primary-900/15 bg-white-50/60 px-4 py-1.5 text-xs text-primary-500 dark:border-primary-700/50 dark:bg-primary-900/60 dark:text-beige-500">
               ۵ صفحه · ۳ تجربه
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {PAGES.slice(0, 3).map((p) => (
               <div key={p.id}>
                 <PageCard page={p} size="sm" />
@@ -326,7 +324,7 @@ export const SolutionSection = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {PAGES.slice(3, 5).map((p) => (
               <div key={p.id}>
                 <PageCard page={p} size="lg" />
@@ -336,12 +334,12 @@ export const SolutionSection = () => {
         </div>
 
         {/* ==== معماری کلان ==== */}
-        <div className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10 mb-16">
-          <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
-            <h3 className="text-xl md:text-2xl font-morabba font-bold text-beige-100">
+        <div className="relative mb-16 rounded-3xl border border-primary-900/10 bg-white-50/40 p-6 backdrop-blur-sm sm:p-10 dark:border-beige-200/10 dark:bg-primary-800/20">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
+            <h3 className="font-morabba text-xl font-bold text-primary-800 md:text-2xl dark:text-beige-100">
               معماری کلان پلتفرم
             </h3>
-            <span className="text-xs text-beige-500 bg-primary-900/60 border border-primary-700/50 rounded-full px-3 py-1.5">
+            <span className="rounded-full border border-primary-900/15 bg-white-50/60 px-3 py-1.5 text-xs text-primary-500 dark:border-primary-700/50 dark:bg-primary-900/60 dark:text-beige-500">
               یک پلتفرم · سه تجربه
             </span>
           </div>
@@ -357,7 +355,7 @@ export const SolutionSection = () => {
           <VerticalConnector height={24} />
           <BranchConnector />
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {PRODUCTS.map((p) => {
               const Icon = ARCH_ICONS[p.icon];
               const a = ACCENT_MAP[p.accent];
@@ -365,25 +363,27 @@ export const SolutionSection = () => {
                 <div
                   key={p.id}
                   className={[
-                    "rounded-2xl border backdrop-blur-sm px-5 py-5",
+                    "rounded-2xl border px-5 py-5 backdrop-blur-sm",
                     a.border,
                     a.bg,
                     a.glow,
                   ].join(" ")}
                 >
-                  <div className="flex items-center gap-2 mb-2.5">
+                  <div className="mb-2.5 flex items-center gap-2">
                     <span className={a.text}>
                       <Icon />
                     </span>
                     <span
-                      className={`w-2 h-2 rounded-full ${a.dot}`}
+                      className={`h-2 w-2 rounded-full ${a.dot}`}
                       aria-hidden="true"
                     />
                   </div>
-                  <p className="text-sm font-morabba font-bold text-beige-50 leading-tight">
+                  <p className="font-morabba text-sm font-bold leading-tight text-primary-900 dark:text-beige-50">
                     {p.titleFa}
                   </p>
-                  <p className="text-xs text-beige-400 mt-1">{p.subtitle}</p>
+                  <p className="mt-1 text-xs text-primary-600 dark:text-beige-400">
+                    {p.subtitle}
+                  </p>
                 </div>
               );
             })}
@@ -412,21 +412,21 @@ export const SolutionSection = () => {
 
         {/* ==== سه محصول — جزئیات ==== */}
         <div className="mb-16">
-          <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
             <div>
-              <h3 className="text-2xl md:text-3xl font-morabba font-bold text-beige-50">
+              <h3 className="font-morabba text-2xl font-bold text-primary-900 md:text-3xl dark:text-beige-50">
                 سه تجربه، یک پلتفرم
               </h3>
-              <p className="text-base text-beige-400 mt-2">
+              <p className="mt-2 text-base text-primary-600 dark:text-beige-400">
                 هر کاربر، زبان طراحی خودش را دارد.
               </p>
             </div>
-            <span className="text-xs text-beige-500 bg-primary-900/60 border border-primary-700/50 rounded-full px-4 py-1.5">
+            <span className="rounded-full border border-primary-900/15 bg-white-50/60 px-4 py-1.5 text-xs text-primary-500 dark:border-primary-700/50 dark:bg-primary-900/60 dark:text-beige-500">
               اصول طراحی
             </span>
           </div>
 
-          <ul className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <ul className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {PRODUCTS.map((p) => {
               const Icon = ARCH_ICONS[p.icon];
               const a = ACCENT_MAP[p.accent];
@@ -434,15 +434,15 @@ export const SolutionSection = () => {
                 <li
                   key={p.id}
                   className={[
-                    "group relative rounded-3xl border backdrop-blur-xl p-6",
+                    "group relative rounded-3xl border p-6 backdrop-blur-xl",
                     a.border,
                     a.bg,
                   ].join(" ")}
                 >
-                  <div className="flex items-start justify-between gap-3 mb-4">
+                  <div className="mb-4 flex items-start justify-between gap-3">
                     <div
                       className={[
-                        "w-12 h-12 rounded-2xl flex items-center justify-center border",
+                        "flex h-12 w-12 items-center justify-center rounded-2xl border",
                         a.border,
                         a.bg,
                         a.text,
@@ -455,7 +455,7 @@ export const SolutionSection = () => {
                         <span
                           key={tag}
                           className={[
-                            "text-[10px] font-medium px-2.5 py-1 rounded-full border",
+                            "rounded-full border px-2.5 py-1 text-[10px] font-medium",
                             a.border,
                             a.text,
                           ].join(" ")}
@@ -466,12 +466,12 @@ export const SolutionSection = () => {
                     </div>
                   </div>
 
-                  <h4 className="text-xl font-morabba font-bold text-beige-50">
+                  <h4 className="font-morabba text-xl font-bold text-primary-900 dark:text-beige-50">
                     {p.titleFa}
                   </h4>
-                  <p className={`text-xs mt-1 ${a.text}`}>{p.subtitle}</p>
+                  <p className={`mt-1 text-xs ${a.text}`}>{p.subtitle}</p>
 
-                  <p className="text-sm text-beige-400 leading-relaxed mt-4">
+                  <p className="mt-4 text-sm leading-relaxed text-primary-600 dark:text-beige-400">
                     {p.description}
                   </p>
 
@@ -479,10 +479,10 @@ export const SolutionSection = () => {
                     {p.features.map((f) => (
                       <li
                         key={f}
-                        className="flex items-start gap-2.5 text-sm text-beige-300"
+                        className="flex items-start gap-2.5 text-sm text-primary-700 dark:text-beige-300"
                       >
                         <span
-                          className={`mt-2 w-1.5 h-1.5 rounded-full shrink-0 ${a.dot}`}
+                          className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${a.dot}`}
                           aria-hidden="true"
                         />
                         <span>{f}</span>
@@ -490,8 +490,8 @@ export const SolutionSection = () => {
                     ))}
                   </ul>
 
-                  <div className="mt-5 pt-4 border-t border-beige-200/[0.06]">
-                    <p className={`text-xs ${a.text} font-medium`}>↳ {p.kpi}</p>
+                  <div className="mt-5 border-t border-primary-900/[0.08] pt-4 dark:border-beige-200/[0.06]">
+                    <p className={`text-xs font-medium ${a.text}`}>↳ {p.kpi}</p>
                   </div>
 
                   <div
@@ -506,65 +506,65 @@ export const SolutionSection = () => {
 
         {/* ==== جریان داده ==== */}
         <div className="mb-16">
-          <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
             <div>
-              <h3 className="text-2xl md:text-3xl font-morabba font-bold text-beige-50">
+              <h3 className="font-morabba text-2xl font-bold text-primary-900 md:text-3xl dark:text-beige-50">
                 یک اقدام، چند تصمیم
               </h3>
-              <p className="text-base text-beige-400 mt-2">
+              <p className="mt-2 text-base text-primary-600 dark:text-beige-400">
                 داده از اهداکننده تا مدیرکل، در یک جریان زنده حرکت می‌کند.
               </p>
             </div>
-            <span className="text-xs text-beige-500 bg-primary-900/60 border border-primary-700/50 rounded-full px-4 py-1.5">
+            <span className="rounded-full border border-primary-900/15 bg-white-50/60 px-4 py-1.5 text-xs text-primary-500 dark:border-primary-700/50 dark:bg-primary-900/60 dark:text-beige-500">
               یک اقدام ← چند تصمیم
             </span>
           </div>
 
-          <ol className="hidden md:flex items-stretch gap-3">
+          <ol className="hidden items-stretch gap-3 md:flex">
             {DATA_FLOW.map((step, idx) => {
               const a = ACCENT_MAP[step.accent];
               const isLast = idx === DATA_FLOW.length - 1;
               return (
                 <li
                   key={idx}
-                  className="flex items-stretch gap-3 flex-1 min-w-0"
+                  className="flex min-w-0 flex-1 items-stretch gap-3"
                 >
                   <div
                     className={[
-                      "flex-1 min-w-0 rounded-2xl border backdrop-blur-sm px-4 py-5 flex flex-col",
+                      "flex min-w-0 flex-1 flex-col rounded-2xl border px-4 py-5 backdrop-blur-sm",
                       a.border,
                       a.bg,
                     ].join(" ")}
                   >
-                    <div className="flex items-center justify-between gap-2 mb-3">
+                    <div className="mb-3 flex items-center justify-between gap-2">
                       <span
                         className={[
-                          "w-2.5 h-2.5 rounded-full shrink-0",
+                          "h-2.5 w-2.5 shrink-0 rounded-full",
                           a.dot,
                         ].join(" ")}
                         aria-hidden="true"
                       />
-                      <span className="text-[10px] text-beige-500">
+                      <span className="text-[10px] text-primary-500 dark:text-beige-500">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                     </div>
 
-                    <p className={`text-xs font-medium ${a.text} mb-1`}>
+                    <p className={`mb-1 text-xs font-medium ${a.text}`}>
                       {step.role}
                     </p>
 
-                    <p className="text-sm text-beige-100 leading-snug mt-auto">
+                    <p className="mt-auto text-sm leading-snug text-primary-900 dark:text-beige-100">
                       {step.label}
                     </p>
                   </div>
 
                   {!isLast && (
                     <div
-                      className="flex items-center justify-center shrink-0 w-5"
+                      className="flex w-5 shrink-0 items-center justify-center"
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-5 h-5 text-beige-500/50"
+                        className="h-5 w-5 text-primary-400/50 dark:text-beige-500/50"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -581,38 +581,38 @@ export const SolutionSection = () => {
             })}
           </ol>
 
-          <ol className="md:hidden relative">
+          <ol className="relative md:hidden">
             {DATA_FLOW.map((step, idx) => {
               const a = ACCENT_MAP[step.accent];
               const isLast = idx === DATA_FLOW.length - 1;
               return (
                 <li key={idx} className="relative flex gap-5 pb-5 last:pb-0">
-                  <div className="relative flex flex-col items-center shrink-0 w-7">
+                  <div className="relative flex w-7 shrink-0 flex-col items-center">
                     <span
                       className={[
-                        "w-3.5 h-3.5 rounded-full ring-4 ring-primary-900/60 z-10",
+                        "z-10 h-3.5 w-3.5 rounded-full ring-4 ring-beige-100 dark:ring-primary-900/60",
                         a.dot,
                       ].join(" ")}
                       aria-hidden="true"
                     />
                     {!isLast && (
                       <span
-                        className="flex-1 w-px bg-gradient-to-b from-beige-200/25 to-beige-200/10 my-1.5"
+                        className="my-1.5 w-px flex-1 bg-gradient-to-b from-primary-900/20 to-primary-900/5 dark:from-beige-200/25 dark:to-beige-200/10"
                         aria-hidden="true"
                       />
                     )}
                   </div>
 
                   <div className="flex-1 pb-1">
-                    <div className="flex items-center gap-3 flex-wrap">
+                    <div className="flex flex-wrap items-center gap-3">
                       <span className={`text-xs font-medium ${a.text}`}>
                         {step.role}
                       </span>
-                      <span className="text-xs text-beige-500">
+                      <span className="text-xs text-primary-500 dark:text-beige-500">
                         / مرحله {String(idx + 1).padStart(2, "0")}
                       </span>
                     </div>
-                    <p className="text-base text-beige-100 mt-1 leading-snug">
+                    <p className="mt-1 text-base leading-snug text-primary-900 dark:text-beige-100">
                       {step.label}
                     </p>
                   </div>
@@ -623,9 +623,9 @@ export const SolutionSection = () => {
         </div>
 
         {/* ==== پیام پایانی ==== */}
-        <div className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/40 via-primary-900/30 to-primary-800/40 backdrop-blur-sm px-8 py-12 text-center">
+        <div className="relative overflow-hidden rounded-3xl border border-primary-900/10 bg-gradient-to-br from-beige-100/60 via-beige-50/40 to-beige-100/60 px-8 py-12 text-center backdrop-blur-sm dark:border-beige-200/10 dark:from-primary-800/40 dark:via-primary-900/30 dark:to-primary-800/40">
           <div
-            className="absolute inset-0 opacity-[0.18] pointer-events-none"
+            className="pointer-events-none absolute inset-0 opacity-[0.10] dark:opacity-[0.18]"
             style={{
               backgroundImage:
                 "radial-gradient(circle at 30% 20%, rgba(18,58,99,0.6), transparent 45%), radial-gradient(circle at 70% 80%, rgba(161,27,46,0.5), transparent 45%)",
@@ -633,17 +633,17 @@ export const SolutionSection = () => {
             aria-hidden="true"
           />
 
-          <p className="relative text-sm text-beige-400 mb-4">
+          <p className="relative mb-4 text-sm text-primary-600 dark:text-beige-400">
             نتیجه نهایی پیشنهاد فدورا
           </p>
-          <p className="relative text-3xl md:text-4xl font-morabba font-bold text-beige-50 leading-tight">
+          <p className="relative font-morabba text-3xl font-bold leading-tight text-primary-900 md:text-4xl dark:text-beige-50">
             یک پلتفرم.
             <br />
-            <span className="bg-gradient-to-l from-blue-300 via-beige-100 to-red-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-l from-blue-500 via-primary-700 to-red-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-beige-100 dark:to-red-400">
               سه تجربه. یک جریان داده.
             </span>
           </p>
-          <p className="relative text-base text-beige-400 mt-5 max-w-2xl mx-auto leading-relaxed">
+          <p className="relative mx-auto mt-5 max-w-2xl text-base leading-relaxed text-primary-600 dark:text-beige-400">
             اهداکننده جذب و همراهی می‌شود، کارشناس توانمند می‌شود، مدیر تصویر
             واقعی می‌بیند.
           </p>
@@ -651,7 +651,7 @@ export const SolutionSection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>

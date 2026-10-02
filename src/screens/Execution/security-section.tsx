@@ -22,22 +22,22 @@ const ACCENT: Record<
   }
 > = {
   blue: {
-    text: "text-blue-300",
-    border: "border-blue-500/30",
-    bg: "bg-blue-600/[0.08]",
-    dot: "bg-blue-400",
+    text: "text-blue-700 dark:text-blue-300",
+    border: "border-blue-600/30 dark:border-blue-500/30",
+    bg: "bg-blue-600/[0.06] dark:bg-blue-600/[0.08]",
+    dot: "bg-blue-600 dark:bg-blue-400",
   },
   red: {
-    text: "text-red-300",
-    border: "border-red-500/30",
-    bg: "bg-red-600/[0.08]",
-    dot: "bg-red-400",
+    text: "text-red-700 dark:text-red-300",
+    border: "border-red-600/30 dark:border-red-500/30",
+    bg: "bg-red-600/[0.06] dark:bg-red-600/[0.08]",
+    dot: "bg-red-600 dark:bg-red-400",
   },
   beige: {
-    text: "text-beige-300",
-    border: "border-beige-500/25",
-    bg: "bg-beige-500/[0.05]",
-    dot: "bg-beige-400",
+    text: "text-primary-700 dark:text-beige-300",
+    border: "border-primary-900/15 dark:border-beige-500/25",
+    bg: "bg-white-50/60 dark:bg-beige-500/[0.05]",
+    dot: "bg-primary-600 dark:bg-beige-400",
   },
 };
 
@@ -98,22 +98,22 @@ export const SecuritySection = () => {
   return (
     <section
       aria-labelledby="security-title"
-      className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0"
     >
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
-            <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+      <div className="container relative z-10 mx-auto">
+        <div className="mb-14 max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
             </span>
-            <span className="text-blue-200 text-sm font-medium tracking-wide">
+            <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
               بخش دوم — امنیت و حریم خصوصی
             </span>
           </div>
 
           <h2
             id="security-title"
-            className="text-4xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.2]"
+            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             داده سلامت،
             <br />
@@ -122,36 +122,36 @@ export const SecuritySection = () => {
             </span>
           </h2>
 
-          <p className="text-lg text-beige-300 leading-relaxed mt-5">
+          <p className="mt-5 text-lg leading-relaxed text-primary-700 dark:text-beige-300">
             امنیت بخش فرعی پروژه نیست؛ از اولین روز طراحی در معماری پلتفرم لحاظ
             می‌شود.
           </p>
         </div>
 
         {/* چهار ستون امنیت */}
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <ul className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-2">
           {PILLARS.map((p) => {
             const a = ACCENT[p.accent];
             return (
               <li
                 key={p.id}
                 className={[
-                  "group relative rounded-3xl border backdrop-blur-sm p-6 sm:p-7",
+                  "group relative rounded-3xl border p-6 backdrop-blur-sm sm:p-7",
                   a.border,
                   a.bg,
                 ].join(" ")}
               >
-                <div className="flex items-center gap-3 mb-3">
+                <div className="mb-3 flex items-center gap-3">
                   <span
-                    className={`w-2.5 h-2.5 rounded-full ${a.dot}`}
+                    className={`h-2.5 w-2.5 rounded-full ${a.dot}`}
                     aria-hidden="true"
                   />
-                  <h3 className="text-lg font-morabba font-bold text-beige-50">
+                  <h3 className="font-morabba text-lg font-bold text-primary-900 dark:text-beige-50">
                     {p.title}
                   </h3>
                 </div>
 
-                <p className="text-sm text-beige-400 leading-relaxed mb-5">
+                <p className="mb-5 text-sm leading-relaxed text-primary-600 dark:text-beige-400">
                   {p.description}
                 </p>
 
@@ -159,10 +159,10 @@ export const SecuritySection = () => {
                   {p.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-2.5 text-sm text-beige-300"
+                      className="flex items-start gap-2.5 text-sm text-primary-700 dark:text-beige-300"
                     >
                       <span
-                        className={`mt-2 w-1.5 h-1.5 rounded-full shrink-0 ${a.dot}`}
+                        className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${a.dot}`}
                         aria-hidden="true"
                       />
                       <span className="leading-relaxed">{item}</span>
@@ -180,22 +180,22 @@ export const SecuritySection = () => {
         </ul>
 
         {/* RPO / RTO */}
-        <div className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10">
-          <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
+        <div className="relative rounded-3xl border border-primary-900/10 bg-white-50/40 p-6 backdrop-blur-sm sm:p-10 dark:border-beige-200/10 dark:bg-primary-800/20">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-xl md:text-2xl font-morabba font-bold text-beige-100">
+              <h3 className="font-morabba text-xl font-bold text-primary-800 md:text-2xl dark:text-beige-100">
                 تداوم کسب‌وکار
               </h3>
-              <p className="text-sm text-beige-400 mt-2">
+              <p className="mt-2 text-sm text-primary-600 dark:text-beige-400">
                 پلتفرم در برابر بحران‌ها مقاوم طراحی می‌شود.
               </p>
             </div>
-            <span className="text-xs text-beige-500 bg-primary-900/60 border border-primary-700/50 rounded-full px-3 py-1.5">
+            <span className="rounded-full border border-primary-900/15 bg-white-50/60 px-3 py-1.5 text-xs text-primary-500 dark:border-primary-700/50 dark:bg-primary-900/60 dark:text-beige-500">
               ISO 22301
             </span>
           </div>
 
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 value: "۱۵ دقیقه",
@@ -223,15 +223,15 @@ export const SecuritySection = () => {
                 <li
                   key={item.label}
                   className={[
-                    "rounded-2xl border backdrop-blur-sm px-5 py-6 text-center",
+                    "rounded-2xl border px-5 py-6 text-center backdrop-blur-sm",
                     a.border,
                     a.bg,
                   ].join(" ")}
                 >
-                  <p className={`text-2xl font-morabba font-bold ${a.text}`}>
+                  <p className={`font-morabba text-2xl font-bold ${a.text}`}>
                     {item.value}
                   </p>
-                  <p className="text-xs text-beige-400 mt-2 leading-relaxed">
+                  <p className="mt-2 text-xs leading-relaxed text-primary-600 dark:text-beige-400">
                     {item.label}
                   </p>
                 </li>
@@ -242,7 +242,7 @@ export const SecuritySection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>

@@ -17,15 +17,12 @@ export const metadata: Metadata = {
     template: "%s | پروپوزال اهدای من",
   },
   description: siteDescription,
-
   authors: [{ name: "شرکت فورا", url: siteUrl }],
   creator: "شرکت فورا",
   publisher: "شرکت فورا",
   applicationName: "پلتفرم اهدای من",
   category: "Healthcare / Proposal",
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   robots: {
     index: false,
     follow: false,
@@ -66,9 +63,42 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * اسکریپت anti-FOUC که قبل از hydration اجرا می‌شه.
+ * منطقش دقیقاً همون منطق theme-store است تا تناقض پیش نیاد.
+ */
+const themeInitScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem('color-scheme');
+    var scheme = null;
+
+    if (stored) {
+      try {
+        var parsed = JSON.parse(stored);
+        scheme = parsed && parsed.state && parsed.state.colorScheme;
+      } catch (e) {}
+    }
+
+    if (!scheme) {
+      scheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    }
+
+    var root = document.documentElement;
+    root.classList.toggle('dark', scheme === 'dark');
+    root.style.colorScheme = scheme;
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html dir="rtl" lang="fa" className="h-full">
+    <html dir="rtl" lang="fa" className="h-full" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         suppressHydrationWarning
         className="font-iransans overflow-x-hidden"

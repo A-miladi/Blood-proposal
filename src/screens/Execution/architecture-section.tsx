@@ -23,25 +23,25 @@ const ACCENT: Record<
   }
 > = {
   blue: {
-    text: "text-blue-300",
-    border: "border-blue-500/30",
-    bg: "bg-blue-600/[0.08]",
-    dot: "bg-blue-400",
-    line: "via-blue-500/50",
+    text: "text-blue-700 dark:text-blue-300",
+    border: "border-blue-600/30 dark:border-blue-500/30",
+    bg: "bg-blue-600/[0.06] dark:bg-blue-600/[0.08]",
+    dot: "bg-blue-600 dark:bg-blue-400",
+    line: "via-blue-600/60 dark:via-blue-500/50",
   },
   red: {
-    text: "text-red-300",
-    border: "border-red-500/30",
-    bg: "bg-red-600/[0.08]",
-    dot: "bg-red-400",
-    line: "via-red-500/50",
+    text: "text-red-700 dark:text-red-300",
+    border: "border-red-600/30 dark:border-red-500/30",
+    bg: "bg-red-600/[0.06] dark:bg-red-600/[0.08]",
+    dot: "bg-red-600 dark:bg-red-400",
+    line: "via-red-600/60 dark:via-red-500/50",
   },
   beige: {
-    text: "text-beige-300",
-    border: "border-beige-500/25",
-    bg: "bg-beige-500/[0.05]",
-    dot: "bg-beige-400",
-    line: "via-beige-500/30",
+    text: "text-primary-700 dark:text-beige-300",
+    border: "border-primary-900/15 dark:border-beige-500/25",
+    bg: "bg-white-50/60 dark:bg-beige-500/[0.05]",
+    dot: "bg-primary-600 dark:bg-beige-400",
+    line: "via-primary-600/40 dark:via-beige-500/30",
   },
 };
 
@@ -117,22 +117,22 @@ export const ArchitectureSection = () => {
   return (
     <section
       aria-labelledby="arch-title"
-      className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0"
     >
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
-            <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+      <div className="container relative z-10 mx-auto">
+        <div className="mb-14 max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
             </span>
-            <span className="text-blue-200 text-sm font-medium tracking-wide">
+            <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
               بخش سوم — معماری فنی
             </span>
           </div>
 
           <h2
             id="arch-title"
-            className="text-4xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.2]"
+            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             پلتفرم روی
             <br />
@@ -141,14 +141,14 @@ export const ArchitectureSection = () => {
             </span>
           </h2>
 
-          <p className="text-lg text-beige-300 leading-relaxed mt-5">
+          <p className="mt-5 text-lg leading-relaxed text-primary-700 dark:text-beige-300">
             معماری لایه‌ای، امکان توسعه مستقل، مقیاس‌پذیری و نگهداری ساده‌تر را
             فراهم می‌کند.
           </p>
         </div>
 
         {/* لایه‌ها */}
-        <div className="relative space-y-3 mb-16">
+        <div className="relative mb-16 space-y-3">
           {LAYERS.map((layer, idx) => {
             const a = ACCENT[layer.accent];
             const isLast = idx === LAYERS.length - 1;
@@ -156,18 +156,18 @@ export const ArchitectureSection = () => {
               <div key={layer.id} className="relative">
                 <div
                   className={[
-                    "rounded-2xl border backdrop-blur-sm p-5 sm:p-6",
+                    "rounded-2xl border p-5 backdrop-blur-sm sm:p-6",
                     a.border,
                     a.bg,
                   ].join(" ")}
                 >
-                  <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
+                  <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
                       <span
-                        className={`w-2.5 h-2.5 rounded-full ${a.dot}`}
+                        className={`h-2.5 w-2.5 rounded-full ${a.dot}`}
                         aria-hidden="true"
                       />
-                      <h3 className="text-lg font-morabba font-bold text-beige-50">
+                      <h3 className="font-morabba text-lg font-bold text-primary-900 dark:text-beige-50">
                         {layer.title}
                       </h3>
                     </div>
@@ -176,11 +176,11 @@ export const ArchitectureSection = () => {
                     </span>
                   </div>
 
-                  <ul className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
+                  <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-4">
                     {layer.items.map((item) => (
                       <li
                         key={item}
-                        className="text-xs text-beige-300 leading-relaxed"
+                        className="text-xs leading-relaxed text-primary-700 dark:text-beige-300"
                       >
                         {item}
                       </li>
@@ -192,7 +192,7 @@ export const ArchitectureSection = () => {
                   <div className="flex justify-center py-1" aria-hidden="true">
                     <span
                       className={[
-                        "w-px h-4 bg-gradient-to-b from-transparent to-transparent",
+                        "h-4 w-px bg-gradient-to-b from-transparent to-transparent",
                         a.line,
                       ].join(" ")}
                     />
@@ -204,39 +204,39 @@ export const ArchitectureSection = () => {
         </div>
 
         {/* یکپارچه‌سازی */}
-        <div className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10">
-          <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
+        <div className="relative rounded-3xl border border-primary-900/10 bg-white-50/40 p-6 backdrop-blur-sm sm:p-10 dark:border-beige-200/10 dark:bg-primary-800/20">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-xl md:text-2xl font-morabba font-bold text-beige-100">
+              <h3 className="font-morabba text-xl font-bold text-primary-800 md:text-2xl dark:text-beige-100">
                 یکپارچه‌سازی با سامانه‌های موجود
               </h3>
-              <p className="text-sm text-beige-400 mt-2">
+              <p className="mt-2 text-sm text-primary-600 dark:text-beige-400">
                 پلتفرم، جایگزین سامانه‌های فعلی نیست؛ لایه‌ای روی آن‌هاست.
               </p>
             </div>
-            <span className="text-xs text-beige-500 bg-primary-900/60 border border-primary-700/50 rounded-full px-3 py-1.5">
+            <span className="rounded-full border border-primary-900/15 bg-white-50/60 px-3 py-1.5 text-xs text-primary-500 dark:border-primary-700/50 dark:bg-primary-900/60 dark:text-beige-500">
               API Gateway
             </span>
           </div>
 
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {INTEGRATIONS.map((item) => {
               const a = ACCENT.blue;
               return (
                 <li
                   key={item.label}
                   className={[
-                    "flex items-center justify-between gap-3 rounded-2xl border backdrop-blur-sm px-5 py-4",
+                    "flex items-center justify-between gap-3 rounded-2xl border px-5 py-4 backdrop-blur-sm",
                     a.border,
                     a.bg,
                   ].join(" ")}
                 >
-                  <span className="text-sm text-beige-200 leading-snug">
+                  <span className="text-sm leading-snug text-primary-800 dark:text-beige-200">
                     {item.label}
                   </span>
                   <span
                     className={[
-                      "text-[10px] font-medium px-2.5 py-1 rounded-full border shrink-0",
+                      "shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-medium",
                       a.border,
                       a.text,
                     ].join(" ")}
@@ -251,7 +251,7 @@ export const ArchitectureSection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>

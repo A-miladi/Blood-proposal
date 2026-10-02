@@ -28,25 +28,28 @@ const ACCENT: Record<
   }
 > = {
   blue: {
-    text: "text-blue-300",
-    border: "border-blue-500/30",
-    bg: "bg-blue-600/[0.08]",
-    dot: "bg-blue-400",
-    badge: "bg-blue-900/40 border-blue-500/30 text-blue-300",
+    text: "text-blue-700 dark:text-blue-300",
+    border: "border-blue-600/30 dark:border-blue-500/30",
+    bg: "bg-blue-600/[0.06] dark:bg-blue-600/[0.08]",
+    dot: "bg-blue-600 dark:bg-blue-400",
+    badge:
+      "bg-blue-100 border-blue-600/30 text-blue-700 dark:bg-blue-900/40 dark:border-blue-500/30 dark:text-blue-300",
   },
   red: {
-    text: "text-red-300",
-    border: "border-red-500/30",
-    bg: "bg-red-600/[0.08]",
-    dot: "bg-red-400",
-    badge: "bg-red-900/40 border-red-500/30 text-red-300",
+    text: "text-red-700 dark:text-red-300",
+    border: "border-red-600/30 dark:border-red-500/30",
+    bg: "bg-red-600/[0.06] dark:bg-red-600/[0.08]",
+    dot: "bg-red-600 dark:bg-red-400",
+    badge:
+      "bg-red-100 border-red-600/30 text-red-700 dark:bg-red-900/40 dark:border-red-500/30 dark:text-red-300",
   },
   beige: {
-    text: "text-beige-300",
-    border: "border-beige-500/25",
-    bg: "bg-beige-500/[0.05]",
-    dot: "bg-beige-400",
-    badge: "bg-primary-800/60 border-beige-500/25 text-beige-300",
+    text: "text-primary-700 dark:text-beige-300",
+    border: "border-primary-900/15 dark:border-beige-500/25",
+    bg: "bg-white-50/60 dark:bg-beige-500/[0.05]",
+    dot: "bg-primary-600 dark:bg-beige-400",
+    badge:
+      "bg-beige-100 border-primary-900/20 text-primary-700 dark:bg-primary-800/60 dark:border-beige-500/25 dark:text-beige-300",
   },
 };
 
@@ -129,23 +132,23 @@ export const AICapabilitiesSection = () => {
   return (
     <section
       aria-labelledby="ai-title"
-      className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0"
     >
-      <div className="container mx-auto relative z-10">
+      <div className="container relative z-10 mx-auto">
         {/* ==== سربرگ ==== */}
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
-            <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+        <div className="mb-14 max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
             </span>
-            <span className="text-blue-200 text-sm font-medium tracking-wide">
+            <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
               بخش چهارم — هوشمندی
             </span>
           </div>
 
           <h2
             id="ai-title"
-            className="text-4xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.2]"
+            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             پلتفرم فقط داده را
             <br />
@@ -154,14 +157,14 @@ export const AICapabilitiesSection = () => {
             </span>
           </h2>
 
-          <p className="text-lg text-beige-300 leading-relaxed mt-5">
+          <p className="mt-5 text-lg leading-relaxed text-primary-700 dark:text-beige-300">
             هوش مصنوعی به پلتفرم کمک می‌کند پیش از وقوع بحران، اهداکننده را
             بشناسد، ظرفیت را تنظیم کند و ارتباط هدفمند بسازد.
           </p>
         </div>
 
         {/* ==== ۶ کارت قابلیت ==== */}
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <ul className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {CAPABILITIES.map((cap) => {
             const Icon = AI_ICONS[cap.icon];
             const a = ACCENT[cap.accent];
@@ -169,16 +172,16 @@ export const AICapabilitiesSection = () => {
               <li
                 key={cap.id}
                 className={[
-                  "group relative rounded-3xl border backdrop-blur-sm p-6",
+                  "group relative rounded-3xl border p-6 backdrop-blur-sm",
                   a.border,
                   a.bg,
                 ].join(" ")}
               >
                 {/* سربرگ کارت */}
-                <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="mb-4 flex items-start justify-between gap-4">
                   <div
                     className={[
-                      "w-12 h-12 rounded-2xl flex items-center justify-center border shrink-0",
+                      "flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border",
                       a.border,
                       a.bg,
                       a.text,
@@ -188,7 +191,7 @@ export const AICapabilitiesSection = () => {
                   </div>
                   <span
                     className={[
-                      "text-[10px] font-medium px-2.5 py-1 rounded-full border shrink-0",
+                      "shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-medium",
                       a.badge,
                     ].join(" ")}
                   >
@@ -196,10 +199,10 @@ export const AICapabilitiesSection = () => {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-morabba font-bold text-beige-50 mb-2 leading-snug">
+                <h3 className="mb-2 font-morabba text-lg font-bold leading-snug text-primary-900 dark:text-beige-50">
                   {cap.title}
                 </h3>
-                <p className="text-sm text-beige-400 leading-relaxed">
+                <p className="text-sm leading-relaxed text-primary-600 dark:text-beige-400">
                   {cap.description}
                 </p>
 
@@ -213,23 +216,23 @@ export const AICapabilitiesSection = () => {
         </ul>
 
         {/* ==== زنجیره داده تا اقدام ==== */}
-        <div className="relative bg-primary-800/20 backdrop-blur-sm border border-beige-200/10 rounded-3xl p-6 sm:p-10">
-          <div className="flex items-center justify-between mb-10 flex-wrap gap-3">
+        <div className="relative rounded-3xl border border-primary-900/10 bg-white-50/40 p-6 backdrop-blur-sm sm:p-10 dark:border-beige-200/10 dark:bg-primary-800/20">
+          <div className="mb-10 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-xl md:text-2xl font-morabba font-bold text-beige-100">
+              <h3 className="font-morabba text-xl font-bold text-primary-800 md:text-2xl dark:text-beige-100">
                 از داده خام تا اقدام
               </h3>
-              <p className="text-sm text-beige-400 mt-2">
+              <p className="mt-2 text-sm text-primary-600 dark:text-beige-400">
                 هر لایه، ورودی لایه بعدی را می‌سازد.
               </p>
             </div>
-            <span className="text-xs text-beige-500 bg-primary-900/60 border border-primary-700/50 rounded-full px-3 py-1.5">
+            <span className="rounded-full border border-primary-900/15 bg-white-50/60 px-3 py-1.5 text-xs text-primary-500 dark:border-primary-700/50 dark:bg-primary-900/60 dark:text-beige-500">
               ۵ مرحله
             </span>
           </div>
 
           {/* دسکتاپ — افقی */}
-          <ol className="hidden md:flex items-stretch gap-3">
+          <ol className="hidden items-stretch gap-3 md:flex">
             {PIPELINE.map((step, idx) => {
               const isLast = idx === PIPELINE.length - 1;
               const tone: Accent =
@@ -242,44 +245,44 @@ export const AICapabilitiesSection = () => {
               return (
                 <li
                   key={step.label}
-                  className="flex items-stretch gap-3 flex-1 min-w-0"
+                  className="flex min-w-0 flex-1 items-stretch gap-3"
                 >
                   <div
                     className={[
-                      "flex-1 min-w-0 rounded-2xl border backdrop-blur-sm px-4 py-5 flex flex-col",
+                      "flex min-w-0 flex-1 flex-col rounded-2xl border px-4 py-5 backdrop-blur-sm",
                       a.border,
                       a.bg,
                     ].join(" ")}
                   >
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="mb-3 flex items-center justify-between">
                       <span
                         className={[
-                          "text-[10px] font-medium px-2 py-0.5 rounded-full border",
+                          "rounded-full border px-2 py-0.5 text-[10px] font-medium",
                           a.badge,
                         ].join(" ")}
                       >
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                       <span
-                        className={`w-2 h-2 rounded-full ${a.dot}`}
+                        className={`h-2 w-2 rounded-full ${a.dot}`}
                         aria-hidden="true"
                       />
                     </div>
-                    <p className="text-sm font-morabba font-bold text-beige-50 leading-tight">
+                    <p className="font-morabba text-sm font-bold leading-tight text-primary-900 dark:text-beige-50">
                       {step.label}
                     </p>
-                    <p className="text-[11px] text-beige-400 mt-1.5">
+                    <p className="mt-1.5 text-[11px] text-primary-600 dark:text-beige-400">
                       {step.sublabel}
                     </p>
                   </div>
 
                   {!isLast && (
                     <div
-                      className="flex items-center justify-center shrink-0 w-5"
+                      className="flex w-5 shrink-0 items-center justify-center"
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-5 h-5 text-beige-500/50"
+                        className="h-5 w-5 text-primary-400/50 dark:text-beige-500/50"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -297,7 +300,7 @@ export const AICapabilitiesSection = () => {
           </ol>
 
           {/* موبایل — عمودی */}
-          <ol className="md:hidden relative">
+          <ol className="relative md:hidden">
             {PIPELINE.map((step, idx) => {
               const isLast = idx === PIPELINE.length - 1;
               const tone: Accent =
@@ -312,32 +315,32 @@ export const AICapabilitiesSection = () => {
                   key={step.label}
                   className="relative flex gap-5 pb-5 last:pb-0"
                 >
-                  <div className="relative flex flex-col items-center shrink-0 w-7">
+                  <div className="relative flex w-7 shrink-0 flex-col items-center">
                     <span
                       className={[
-                        "w-3.5 h-3.5 rounded-full ring-4 ring-primary-900/60 z-10",
+                        "z-10 h-3.5 w-3.5 rounded-full ring-4 ring-beige-100 dark:ring-primary-900/60",
                         a.dot,
                       ].join(" ")}
                       aria-hidden="true"
                     />
                     {!isLast && (
                       <span
-                        className="flex-1 w-px bg-gradient-to-b from-beige-200/25 to-beige-200/10 my-1.5"
+                        className="my-1.5 w-px flex-1 bg-gradient-to-b from-primary-900/20 to-primary-900/5 dark:from-beige-200/25 dark:to-beige-200/10"
                         aria-hidden="true"
                       />
                     )}
                   </div>
 
                   <div className="flex-1 pb-1">
-                    <div className="flex items-center gap-3 flex-wrap">
+                    <div className="flex flex-wrap items-center gap-3">
                       <span className={`text-xs font-medium ${a.text}`}>
                         {step.label}
                       </span>
-                      <span className="text-xs text-beige-500">
+                      <span className="text-xs text-primary-500 dark:text-beige-500">
                         / مرحله {String(idx + 1).padStart(2, "0")}
                       </span>
                     </div>
-                    <p className="text-sm text-beige-200 mt-1">
+                    <p className="mt-1 text-sm text-primary-800 dark:text-beige-200">
                       {step.sublabel}
                     </p>
                   </div>
@@ -349,7 +352,7 @@ export const AICapabilitiesSection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>

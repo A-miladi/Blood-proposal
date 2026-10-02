@@ -12,21 +12,21 @@ type Segment = {
 
 /* ============ پالت ============ */
 const STROKE_CLASS: Record<Accent, string> = {
-  blue: "stroke-blue-400",
-  red: "stroke-red-400",
-  beige: "stroke-beige-400",
+  blue: "stroke-blue-600 dark:stroke-blue-400",
+  red: "stroke-red-600 dark:stroke-red-400",
+  beige: "stroke-primary-600 dark:stroke-beige-400",
 };
 
 const TEXT_CLASS: Record<Accent, string> = {
-  blue: "text-blue-300",
-  red: "text-red-300",
-  beige: "text-beige-300",
+  blue: "text-blue-700 dark:text-blue-300",
+  red: "text-red-700 dark:text-red-300",
+  beige: "text-primary-700 dark:text-beige-300",
 };
 
 const DOT_CLASS: Record<Accent, string> = {
-  blue: "bg-blue-400",
-  red: "bg-red-400",
-  beige: "bg-beige-400",
+  blue: "bg-blue-600 dark:bg-blue-400",
+  red: "bg-red-600 dark:bg-red-400",
+  beige: "bg-primary-600 dark:bg-beige-400",
 };
 
 /* ============ داده‌های چارت ============ */
@@ -78,10 +78,10 @@ function SegmentedRing({
   });
 
   return (
-    <div className="relative w-full max-w-[340px] aspect-square mx-auto">
+    <div className="relative mx-auto aspect-square w-full max-w-[340px]">
       <svg
         viewBox="0 0 100 100"
-        className="absolute inset-0 w-full h-full pointer-events-none -rotate-90"
+        className="pointer-events-none absolute inset-0 h-full w-full -rotate-90"
         aria-hidden="true"
       >
         <circle
@@ -90,7 +90,7 @@ function SegmentedRing({
           r={radius}
           fill="none"
           strokeWidth={strokeWidth}
-          className="stroke-beige-200/8"
+          className="stroke-primary-900/8 dark:stroke-beige-200/8"
         />
         {arcs.map(({ segment, start, end }) => (
           <path
@@ -115,11 +115,11 @@ function SegmentedRing({
           >
             <div className="flex items-center gap-1.5 whitespace-nowrap">
               <span
-                className={`w-1.5 h-1.5 rounded-full ${DOT_CLASS[segment.accent]}`}
+                className={`h-1.5 w-1.5 rounded-full ${DOT_CLASS[segment.accent]}`}
                 aria-hidden="true"
               />
               <span
-                className={`text-[10px] font-morabba font-bold leading-none ${TEXT_CLASS[segment.accent]}`}
+                className={`font-morabba text-[10px] font-bold leading-none ${TEXT_CLASS[segment.accent]}`}
               >
                 {segment.label}
               </span>
@@ -129,12 +129,14 @@ function SegmentedRing({
       })}
 
       {/* مرکز */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[42%] aspect-square rounded-full border border-beige-200/15 bg-primary-800/80 backdrop-blur-sm flex flex-col items-center justify-center text-center">
-          <p className="text-2xl font-morabba font-bold text-beige-50 leading-none">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="flex aspect-square w-[42%] flex-col items-center justify-center rounded-full border border-primary-900/15 bg-white-50/80 text-center backdrop-blur-sm dark:border-beige-200/15 dark:bg-primary-800/80">
+          <p className="font-morabba text-2xl font-bold leading-none text-primary-900 dark:text-beige-50">
             {total}
           </p>
-          <p className="text-[9px] text-beige-400 mt-1">ماژول</p>
+          <p className="mt-1 text-[9px] text-primary-500 dark:text-beige-400">
+            ماژول
+          </p>
         </div>
       </div>
     </div>
@@ -146,25 +148,25 @@ export const PageHeader = () => {
   return (
     <section
       aria-labelledby="showcase-title"
-      className="relative w-full pt-8 lg:pt-24 pb-16 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 pb-16 pt-8 font-iransans lg:px-0 lg:pt-24"
     >
-      <div className="container mx-auto relative z-10">
+      <div className="container relative z-10 mx-auto">
         {/* دو ستونه: تیتر + چارت */}
-        <div className="grid items-center gap-10 lg:gap-14 lg:grid-cols-[1.3fr_1fr]">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
           {/* ستون تیتر */}
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-6">
-              <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-                <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+              <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
               </span>
-              <span className="text-blue-200 text-sm font-medium tracking-wide">
+              <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
                 پیوست — ماژول‌های پلتفرم
               </span>
             </div>
 
             <h1
               id="showcase-title"
-              className="text-4xl sm:text-5xl md:text-6xl font-morabba font-bold text-beige-50 leading-[1.15]"
+              className="font-morabba text-4xl font-bold leading-[1.15] text-primary-900 sm:text-5xl md:text-6xl dark:text-beige-50"
             >
               یک پلتفرم،
               <br />
@@ -173,7 +175,7 @@ export const PageHeader = () => {
               </span>
             </h1>
 
-            <p className="text-base md:text-lg text-beige-300 leading-relaxed mt-6 max-w-2xl">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-primary-700 md:text-lg dark:text-beige-300">
               نگاهی کامل به ماژول‌های سه محصول: پلتفرم اهداکننده، پنل عملیات و
               پنل مدیران. هر ماژول، بخشی از یک جریان داده واحد است.
             </p>
@@ -186,7 +188,7 @@ export const PageHeader = () => {
         </div>
 
         {/* آمار */}
-        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16">
+        <ul className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {[
             { value: "۱۳", label: "ماژول اهداکننده" },
             { value: "۱۴", label: "ماژول عملیات" },
@@ -195,12 +197,14 @@ export const PageHeader = () => {
           ].map((s) => (
             <li
               key={s.label}
-              className="bg-primary-800/40 backdrop-blur-sm border border-beige-200/10 rounded-2xl px-5 py-5 text-center"
+              className="rounded-2xl border border-primary-900/10 bg-white-50/60 px-5 py-5 text-center backdrop-blur-sm dark:border-beige-200/10 dark:bg-primary-800/40"
             >
-              <p className="text-3xl sm:text-4xl font-morabba font-bold text-red-500">
+              <p className="font-morabba text-3xl font-bold text-red-600 sm:text-4xl dark:text-red-500">
                 {s.value}
               </p>
-              <p className="text-sm text-beige-400 mt-1.5">{s.label}</p>
+              <p className="mt-1.5 text-sm text-primary-600 dark:text-beige-400">
+                {s.label}
+              </p>
             </li>
           ))}
         </ul>

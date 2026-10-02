@@ -34,25 +34,28 @@ const ACCENT: Record<
   }
 > = {
   blue: {
-    text: "text-blue-300",
-    border: "border-blue-500/30",
-    bg: "bg-blue-600/[0.08]",
-    dot: "bg-blue-400",
-    badge: "bg-blue-900/40 border-blue-500/30 text-blue-300",
+    text: "text-blue-700 dark:text-blue-300",
+    border: "border-blue-600/30 dark:border-blue-500/30",
+    bg: "bg-blue-600/[0.06] dark:bg-blue-600/[0.08]",
+    dot: "bg-blue-600 dark:bg-blue-400",
+    badge:
+      "bg-blue-100 border-blue-600/30 text-blue-700 dark:bg-blue-900/40 dark:border-blue-500/30 dark:text-blue-300",
   },
   red: {
-    text: "text-red-300",
-    border: "border-red-500/30",
-    bg: "bg-red-600/[0.08]",
-    dot: "bg-red-400",
-    badge: "bg-red-900/40 border-red-500/30 text-red-300",
+    text: "text-red-700 dark:text-red-300",
+    border: "border-red-600/30 dark:border-red-500/30",
+    bg: "bg-red-600/[0.06] dark:bg-red-600/[0.08]",
+    dot: "bg-red-600 dark:bg-red-400",
+    badge:
+      "bg-red-100 border-red-600/30 text-red-700 dark:bg-red-900/40 dark:border-red-500/30 dark:text-red-300",
   },
   beige: {
-    text: "text-beige-300",
-    border: "border-beige-500/25",
-    bg: "bg-beige-500/[0.05]",
-    dot: "bg-beige-400",
-    badge: "bg-primary-800/60 border-beige-500/25 text-beige-300",
+    text: "text-primary-700 dark:text-beige-300",
+    border: "border-primary-900/15 dark:border-beige-500/25",
+    bg: "bg-white-50/60 dark:bg-beige-500/[0.05]",
+    dot: "bg-primary-600 dark:bg-beige-400",
+    badge:
+      "bg-beige-100 border-primary-900/20 text-primary-700 dark:bg-primary-800/60 dark:border-beige-500/25 dark:text-beige-300",
   },
 };
 
@@ -65,7 +68,7 @@ const IconDonor = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-7 h-7"
+    className="h-7 w-7"
   >
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />
@@ -80,7 +83,7 @@ const IconStaff = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-7 h-7"
+    className="h-7 w-7"
   >
     <rect x="3" y="3" width="7" height="9" rx="1.5" />
     <rect x="14" y="3" width="7" height="5" rx="1.5" />
@@ -97,7 +100,7 @@ const IconDirector = () => (
     strokeWidth="1.6"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="w-7 h-7"
+    className="h-7 w-7"
   >
     <path d="M3 3v18h18" />
     <path d="M7 14l4-4 4 4 5-5" />
@@ -248,11 +251,11 @@ function ProductBlock({ product }: ProductBlockProps) {
   return (
     <div className="relative">
       {/* سربرگ محصول */}
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex items-start gap-4">
           <div
             className={[
-              "w-14 h-14 rounded-2xl flex items-center justify-center border shrink-0",
+              "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border",
               a.border,
               a.bg,
               a.text,
@@ -261,17 +264,17 @@ function ProductBlock({ product }: ProductBlockProps) {
             {product.icon}
           </div>
           <div>
-            <h3 className="text-2xl md:text-3xl font-morabba font-bold text-beige-50 leading-tight">
+            <h3 className="font-morabba text-2xl font-bold leading-tight text-primary-900 md:text-3xl dark:text-beige-50">
               {product.title}
             </h3>
-            <p className={`text-sm mt-1 ${a.text}`}>{product.tagline}</p>
+            <p className={`mt-1 text-sm ${a.text}`}>{product.tagline}</p>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 sm:justify-end">
           <span
             className={[
-              "text-[10px] font-medium px-2.5 py-1 rounded-full border",
+              "rounded-full border px-2.5 py-1 text-[10px] font-medium",
               a.badge,
             ].join(" ")}
           >
@@ -281,7 +284,7 @@ function ProductBlock({ product }: ProductBlockProps) {
             <span
               key={p}
               className={[
-                "text-[10px] font-medium px-2.5 py-1 rounded-full border",
+                "rounded-full border px-2.5 py-1 text-[10px] font-medium",
                 a.border,
                 a.text,
               ].join(" ")}
@@ -293,29 +296,29 @@ function ProductBlock({ product }: ProductBlockProps) {
       </div>
 
       {/* گرید ماژول‌ها */}
-      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
         {product.modules.map((m, idx) => (
           <li
             key={m.id}
             className={[
-              "group relative rounded-2xl border backdrop-blur-sm px-4 py-4",
-              "border-beige-200/10 hover:border-beige-200/20",
-              "bg-primary-800/30",
+              "group relative rounded-2xl border px-4 py-4 backdrop-blur-sm",
+              "border-primary-900/10 bg-white-50/60 hover:border-primary-900/20",
+              "dark:border-beige-200/10 dark:bg-primary-800/30 dark:hover:border-beige-200/20",
             ].join(" ")}
           >
-            <div className="flex items-center gap-2 mb-2">
+            <div className="mb-2 flex items-center gap-2">
               <span
-                className={`w-1.5 h-1.5 rounded-full ${a.dot}`}
+                className={`h-1.5 w-1.5 rounded-full ${a.dot}`}
                 aria-hidden="true"
               />
-              <span className="text-[10px] text-beige-500 font-mono">
+              <span className="font-mono text-[10px] text-primary-500 dark:text-beige-500">
                 {String(idx + 1).padStart(2, "0")}
               </span>
             </div>
-            <h4 className="text-sm font-morabba font-bold text-beige-100 leading-snug mb-1">
+            <h4 className="mb-1 font-morabba text-sm font-bold leading-snug text-primary-800 dark:text-beige-100">
               {m.title}
             </h4>
-            <p className="text-[11px] text-beige-500 leading-relaxed">
+            <p className="text-[11px] leading-relaxed text-primary-500 dark:text-beige-500">
               {m.description}
             </p>
 
@@ -335,22 +338,22 @@ export const ProductsShowcase = () => {
   return (
     <section
       aria-labelledby="showcase-products-title"
-      className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0"
     >
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
-            <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+      <div className="container relative z-10 mx-auto">
+        <div className="mb-14 max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
             </span>
-            <span className="text-blue-200 text-sm font-medium tracking-wide">
+            <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
               بخش اول — سه محصول
             </span>
           </div>
 
           <h2
             id="showcase-products-title"
-            className="text-4xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.2]"
+            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             هر محصول،
             <br />
@@ -359,7 +362,7 @@ export const ProductsShowcase = () => {
             </span>
           </h2>
 
-          <p className="text-lg text-beige-300 leading-relaxed mt-5">
+          <p className="mt-5 text-lg leading-relaxed text-primary-700 dark:text-beige-300">
             مجموع ۴۰ ماژول که در سه تجربه متفاوت طراحی شده‌اند — همه با یک زبان
             واحد و یک لایه داده مشترک.
           </p>
@@ -368,12 +371,12 @@ export const ProductsShowcase = () => {
         <div className="space-y-20">
           <ProductBlock product={PRODUCTS[0]} />
           <div
-            className="h-px w-full bg-gradient-to-r from-transparent via-beige-200/10 to-transparent"
+            className="h-px w-full bg-gradient-to-r from-transparent via-primary-900/15 to-transparent dark:via-beige-200/10"
             aria-hidden="true"
           />
           <ProductBlock product={PRODUCTS[1]} />
           <div
-            className="h-px w-full bg-gradient-to-r from-transparent via-beige-200/10 to-transparent"
+            className="h-px w-full bg-gradient-to-r from-transparent via-primary-900/15 to-transparent dark:via-beige-200/10"
             aria-hidden="true"
           />
           <ProductBlock product={PRODUCTS[2]} />
@@ -381,7 +384,7 @@ export const ProductsShowcase = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>

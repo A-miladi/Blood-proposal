@@ -25,25 +25,28 @@ const ACCENT: Record<
   }
 > = {
   blue: {
-    text: "text-blue-300",
-    border: "border-blue-500/30",
-    bg: "bg-blue-600/[0.08]",
-    dot: "bg-blue-400",
-    badge: "bg-blue-900/40 border-blue-500/30 text-blue-300",
+    text: "text-blue-700 dark:text-blue-300",
+    border: "border-blue-600/30 dark:border-blue-500/30",
+    bg: "bg-blue-600/[0.06] dark:bg-blue-600/[0.08]",
+    dot: "bg-blue-600 dark:bg-blue-400",
+    badge:
+      "bg-blue-100 border-blue-600/30 text-blue-700 dark:bg-blue-900/40 dark:border-blue-500/30 dark:text-blue-300",
   },
   red: {
-    text: "text-red-300",
-    border: "border-red-500/30",
-    bg: "bg-red-600/[0.08]",
-    dot: "bg-red-400",
-    badge: "bg-red-900/40 border-red-500/30 text-red-300",
+    text: "text-red-700 dark:text-red-300",
+    border: "border-red-600/30 dark:border-red-500/30",
+    bg: "bg-red-600/[0.06] dark:bg-red-600/[0.08]",
+    dot: "bg-red-600 dark:bg-red-400",
+    badge:
+      "bg-red-100 border-red-600/30 text-red-700 dark:bg-red-900/40 dark:border-red-500/30 dark:text-red-300",
   },
   beige: {
-    text: "text-beige-300",
-    border: "border-beige-500/25",
-    bg: "bg-beige-500/[0.05]",
-    dot: "bg-beige-400",
-    badge: "bg-primary-800/60 border-beige-500/25 text-beige-300",
+    text: "text-primary-700 dark:text-beige-300",
+    border: "border-primary-900/15 dark:border-beige-500/25",
+    bg: "bg-white-50/60 dark:bg-beige-500/[0.05]",
+    dot: "bg-primary-600 dark:bg-beige-400",
+    badge:
+      "bg-beige-100 border-primary-900/20 text-primary-700 dark:bg-primary-800/60 dark:border-beige-500/25 dark:text-beige-300",
   },
 };
 
@@ -112,23 +115,23 @@ export const BenchmarkSection = () => {
   return (
     <section
       aria-labelledby="benchmark-title"
-      className="relative w-full py-20 px-4 lg:px-0 font-iransans overflow-hidden"
+      className="relative w-full overflow-hidden px-4 py-20 font-iransans lg:px-0"
     >
-      <div className="container mx-auto relative z-10">
+      <div className="container relative z-10 mx-auto">
         {/* ==== سربرگ ==== */}
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-900/30 backdrop-blur-xl border border-blue-500/30 rounded-full px-5 py-2 mb-5">
-            <span className="relative flex w-2.5 h-2.5" aria-hidden="true">
-              <span className="relative inline-flex rounded-full w-2.5 h-2.5 bg-red-500" />
+        <div className="mb-14 max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-100/70 px-5 py-2 backdrop-blur-xl dark:bg-blue-900/30">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
             </span>
-            <span className="text-blue-200 text-sm font-medium tracking-wide">
+            <span className="text-sm font-medium tracking-wide text-blue-800 dark:text-blue-200">
               بخش ششم — تجربه جهانی
             </span>
           </div>
 
           <h2
             id="benchmark-title"
-            className="text-4xl md:text-5xl font-morabba font-bold text-beige-50 leading-[1.2]"
+            className="font-morabba text-4xl font-bold leading-[1.2] text-primary-900 md:text-5xl dark:text-beige-50"
           >
             دیگران چه کرده‌اند،
             <br />
@@ -137,31 +140,31 @@ export const BenchmarkSection = () => {
             </span>
           </h2>
 
-          <p className="text-lg text-beige-300 leading-relaxed mt-5">
+          <p className="mt-5 text-lg leading-relaxed text-primary-700 dark:text-beige-300">
             تجربه کشورهای پیشرو را بررسی کردیم؛ نه برای کپی، بلکه برای طراحی
             متناسب با ساختار و فرهنگ سازمان انتقال خون ایران.
           </p>
         </div>
 
         {/* ==== چهار کارت کشور ==== */}
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <ul className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-2">
           {COUNTRIES.map((c) => {
             const a = ACCENT[c.accent];
             return (
               <li
                 key={c.id}
                 className={[
-                  "group relative rounded-3xl border backdrop-blur-sm p-6 sm:p-7",
+                  "group relative rounded-3xl border p-6 backdrop-blur-sm sm:p-7",
                   a.border,
                   a.bg,
                 ].join(" ")}
               >
                 {/* سربرگ کارت */}
-                <div className="flex items-center gap-4 mb-5">
+                <div className="mb-5 flex items-center gap-4">
                   <div
                     className={[
-                      "w-14 h-14 rounded-2xl flex items-center justify-center border shrink-0",
-                      "font-morabba font-bold text-lg",
+                      "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border",
+                      "font-morabba text-lg font-bold",
                       a.border,
                       a.bg,
                       a.text,
@@ -170,17 +173,17 @@ export const BenchmarkSection = () => {
                     {c.flag}
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-lg font-morabba font-bold text-beige-50 leading-tight">
+                    <h3 className="font-morabba text-lg font-bold leading-tight text-primary-900 dark:text-beige-50">
                       {c.country}
                     </h3>
-                    <p className={`text-xs mt-0.5 ${a.text}`}>{c.service}</p>
+                    <p className={`mt-0.5 text-xs ${a.text}`}>{c.service}</p>
                   </div>
                 </div>
 
                 {/* نکته کلیدی */}
                 <div
                   className={[
-                    "rounded-xl border px-3 py-2 mb-5",
+                    "mb-5 rounded-xl border px-3 py-2",
                     a.border,
                     a.bg,
                   ].join(" ")}
@@ -195,10 +198,10 @@ export const BenchmarkSection = () => {
                   {c.features.map((f) => (
                     <li
                       key={f}
-                      className="flex items-start gap-2.5 text-sm text-beige-300"
+                      className="flex items-start gap-2.5 text-sm text-primary-700 dark:text-beige-300"
                     >
                       <span
-                        className={`mt-2 w-1.5 h-1.5 rounded-full shrink-0 ${a.dot}`}
+                        className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${a.dot}`}
                         aria-hidden="true"
                       />
                       <span className="leading-relaxed">{f}</span>
@@ -216,9 +219,9 @@ export const BenchmarkSection = () => {
         </ul>
 
         {/* ==== پیام بومی‌سازی ==== */}
-        <div className="relative rounded-3xl overflow-hidden border border-beige-200/10 bg-gradient-to-br from-primary-800/40 via-primary-900/30 to-primary-800/40 backdrop-blur-sm px-8 py-12 text-center">
+        <div className="relative overflow-hidden rounded-3xl border border-primary-900/10 bg-gradient-to-br from-beige-100/60 via-beige-50/40 to-beige-100/60 px-8 py-12 text-center backdrop-blur-sm dark:border-beige-200/10 dark:from-primary-800/40 dark:via-primary-900/30 dark:to-primary-800/40">
           <div
-            className="absolute inset-0 opacity-[0.18] pointer-events-none"
+            className="pointer-events-none absolute inset-0 opacity-[0.10] dark:opacity-[0.18]"
             style={{
               backgroundImage:
                 "radial-gradient(circle at 25% 30%, rgba(18,58,99,0.6), transparent 45%), radial-gradient(circle at 75% 70%, rgba(161,27,46,0.5), transparent 45%)",
@@ -226,15 +229,17 @@ export const BenchmarkSection = () => {
             aria-hidden="true"
           />
 
-          <p className="relative text-sm text-beige-400 mb-4">نتیجه بررسی</p>
-          <p className="relative text-2xl md:text-3xl font-morabba font-bold text-beige-50 leading-tight">
+          <p className="relative mb-4 text-sm text-primary-600 dark:text-beige-400">
+            نتیجه بررسی
+          </p>
+          <p className="relative font-morabba text-2xl font-bold leading-tight text-primary-900 md:text-3xl dark:text-beige-50">
             نه کپی،
             <br />
-            <span className="bg-gradient-to-l from-blue-300 via-beige-100 to-red-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-l from-blue-500 via-primary-700 to-red-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-beige-100 dark:to-red-400">
               بومی‌سازی.
             </span>
           </p>
-          <p className="relative text-base text-beige-400 mt-5 max-w-2xl mx-auto leading-relaxed">
+          <p className="relative mx-auto mt-5 max-w-2xl text-base leading-relaxed text-primary-600 dark:text-beige-400">
             ساختار سازمان، داده‌های موجود، فرآیندهای داخلی، زبان و فرهنگ کاربر
             ایرانی، مبنای طراحی ماست.
           </p>
@@ -242,7 +247,7 @@ export const BenchmarkSection = () => {
       </div>
 
       <div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
+        className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
         aria-hidden="true"
       />
     </section>
